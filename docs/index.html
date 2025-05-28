@@ -300,6 +300,49 @@
             margin-bottom: 1rem;
         }
 
+       .footer {
+            background: #2c3e50 !important;
+        }
+
+        .footer h5 {
+            font-weight: 600;
+            margin-bottom: 15px;
+            color: white !important;
+        }
+
+        .footer p {
+            margin-bottom: 10px;
+            line-height: 1.6;
+        }
+
+        .footer .text-muted {
+            color: #bdc3c7 !important;
+        }
+
+        .social-links a {
+            transition: transform 0.3s ease, color 0.3s ease;
+            display: inline-block;
+            text-decoration: none;
+        }
+
+        .social-links a:hover {
+            transform: translateY(-3px);
+            color: #3498db !important;
+        }
+
+        @media (max-width: 768px) {
+            .footer .text-md-end {
+                text-align: center !important;
+                margin-top: 20px;
+            }
+            
+            .footer .social-links {
+                text-align: center;
+                margin-top: 15px;
+            }
+        }
+
+
         /* Team Section */
         /* Team Section */
         .team-container {
@@ -1253,21 +1296,29 @@ python inference.py --input sample.jpg --output result.jpg --scale 4</code></pre
     </section>
 
     <!-- Footer -->
-    <footer class="py-5 bg-dark text-white">
+    <footer class="footer py-5 bg-dark text-white">
         <div class="container">
-            <div class="row">
+            <div class="row align-items-center">
                 <div class="col-md-6">
                     <h5>Structure-Informed Super-Resolution</h5>
-                    <p class="text-muted">Revolutionary AI technology for scientific imaging applications.</p>
+                    <p class="text-muted mb-3">Revolutionary AI technology for scientific imaging applications.</p>
                     <div class="social-links">
-                        <a href="#" class="text-white me-3"><i class="fab fa-github fa-2x"></i></a>
-                        <a href="#" class="text-white me-3"><i class="fab fa-twitter fa-2x"></i></a>
-                        <a href="#" class="text-white me-3"><i class="fab fa-linkedin fa-2x"></i></a>
+                        <a href="#" class="text-white me-3" title="GitHub">
+                            <i class="fab fa-github fa-2x"></i>
+                        </a>
+                        <a href="#" class="text-white me-3" title="Twitter">
+                            <i class="fab fa-twitter fa-2x"></i>
+                        </a>
+                        <a href="#" class="text-white me-3" title="LinkedIn">
+                            <i class="fab fa-linkedin fa-2x"></i>
+                        </a>
                     </div>
                 </div>
                 <div class="col-md-6 text-md-end">
-                    <p class="text-muted">&copy; 2025 Team LeviOsa. All rights reserved.</p>
-                    <p class="text-muted">Built with ❤️ for the research community</p>
+                    <p class="text-muted mb-2">&copy; 2024 Your Name. All rights reserved.</p>
+                    <p class="text-muted mb-0">
+                        Built with <span style="color: #e74c3c;">❤️</span> for the research community
+                    </p>
                 </div>
             </div>
         </div>
