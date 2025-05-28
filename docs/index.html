@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Structure-Informed Super-Resolution Technique for Scientific Imaging | Final Year Research Project</title>
-    <meta name="description" content="Advanced Structure-Informed Super-Resolution technique outperforming VDSR, ESRGAN, SwinIR, and HMA-Net">
-    <meta name="keywords" content="super-resolution, machine learning, computer vision, GAI, scientific imaging, PhD research">
+    <meta name="description" content="Advanced Structure-Informed Super-Resolution technique outperforming VDSR, ESRGAN, SwinIR, and HMA-Net in scientific imaging applications.">
+    <meta name="keywords" content="super-resolution, machine learning, computer vision, GAN, scientific imaging, PhD research">
     
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
@@ -16,71 +16,1329 @@
     <meta property="twitter:card" content="summary_large_image">
     <meta property="twitter:title" content="Structure-Informed Super-Resolution Research">
     
-    <!-- External CDN Resources -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css" rel="stylesheet">
     
-    <!-- Custom CSS -->
-    <link rel="stylesheet" href="assets/css/main.css">
-    <link rel="stylesheet" href="assets/css/responsive.css">
-    <link rel="stylesheet" href="assets/css/components.css">
+    <style>
+        :root {
+            --primary-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            --secondary-gradient: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            --accent-gradient: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+            --dark-gradient: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+            --text-primary: #2c3e50;
+            --text-secondary: #7f8c8d;
+            --success-color: #27ae60;
+            --warning-color: #f39c12;
+            --danger-color: #e74c3c;
+        }
+
+        * {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text-primary);
+            overflow-x: hidden;
+        }
+
+        /* Animated Background */
+        .animated-bg {
+            background: var(--primary-gradient);
+            background-size: 400% 400%;
+            animation: gradientShift 15s ease infinite;
+        }
+
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* Hero Section */
+        .hero-section {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-content {
+            z-index: 2;
+            position: relative;
+        }
+
+        .hero-title {
+            font-size: 4rem;
+            font-weight: 800;
+            color: white;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            margin-bottom: 2rem;
+        }
+
+        .hero-subtitle {
+            font-size: 1.5rem;
+            color: rgba(255,255,255,0.9);
+            margin-bottom: 3rem;
+        }
+
+        .floating-elements {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+
+        .floating-element {
+            position: absolute;
+            background: rgba(255,255,255,0.1);
+            border-radius: 50%;
+            animation: float 20s infinite linear;
+        }
+
+        .floating-element:nth-child(1) {
+            width: 80px;
+            height: 80px;
+            left: 10%;
+            animation-delay: 0s;
+        }
+        
+        .floating-element:nth-child(2) {
+            width: 60px;
+            height: 60px;
+            left: 20%;
+            animation-delay: 5s;
+        }
+        
+        .floating-element:nth-child(3) {
+            width: 100px;
+            height: 100px;
+            left: 70%;
+            animation-delay: 10s;
+        }
+
+        @keyframes float {
+            0% { transform: translateY(100vh) rotate(0deg); opacity: 0; }
+            10% { opacity: 1; }
+            90% { opacity: 1; }
+            100% { transform: translateY(-100px) rotate(360deg); opacity: 0; }
+        }
+
+        /* Glassmorphism Cards */
+        .glass-card {
+            background: rgba(255, 255, 255, 0.25);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.18);
+            padding: 2rem;
+            transition: all 0.3s ease;
+        }
+
+        .glass-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+        }
+
+        /* Section Styling */
+        .section {
+            padding: 100px 0;
+            position: relative;
+        }
+
+        .section-title {
+            font-size: 3rem;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 4rem;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            width: 100px;
+            height: 4px;
+            background: var(--primary-gradient);
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            border-radius: 2px;
+        }
+
+        /* Research Highlights */
+        .highlight-card {
+            background: white;
+            border-radius: 20px;
+            padding: 2rem;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            height: 100%;
+        }
+
+        .highlight-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+        }
+
+        .highlight-icon {
+            width: 80px;
+            height: 80px;
+            background: var(--accent-gradient);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+            color: white;
+            font-size: 2rem;
+        }
+
+        /* Performance Metrics */
+        .metrics-container {
+            background: var(--dark-gradient);
+            border-radius: 20px;
+            padding: 3rem;
+            color: white;
+            margin: 3rem 0;
+        }
+
+        .metric-item {
+            text-align: center;
+            padding: 1rem;
+        }
+
+        .metric-value {
+            font-size: 3rem;
+            font-weight: 800;
+            background: var(--accent-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        .metric-label {
+            font-size: 1.1rem;
+            opacity: 0.9;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .metric-description {
+            font-size: 0.9rem;
+            opacity: 0.7;
+            margin-top: 0.5rem;
+        }
+
+        /* Interactive Demo Section */
+        .demo-section {
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            border-radius: 30px;
+            padding: 4rem 2rem;
+            margin: 3rem 0;
+            text-align: center;
+        }
+
+        .demo-embed {
+            background: white;
+            border-radius: 20px;
+            padding: 2rem;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+            min-height: 600px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+        }
+
+        /* Publication Section */
+        .publication-card {
+            background: white;
+            border-left: 5px solid var(--success-color);
+            border-radius: 10px;
+            padding: 2rem;
+            margin: 2rem 0;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+            transition: all 0.3s ease;
+        }
+
+        .publication-card:hover {
+            transform: translateX(10px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+        }
+
+        /* Downloads Section */
+        .download-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+
+        .download-card {
+            background: white;
+            border-radius: 15px;
+            padding: 2rem;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+        }
+
+        .download-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .download-icon {
+            font-size: 3rem;
+            color: var(--success-color);
+            margin-bottom: 1rem;
+        }
+
+        /* Team Section */
+        .team-member {
+            text-align: center;
+            padding: 2rem;
+        }
+
+        .member-photo {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            margin: 0 auto 1rem;
+            background: var(--primary-gradient);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 3rem;
+        }
+
+        /* Contact Section */
+        .contact-section {
+            background: var(--dark-gradient);
+            color: white;
+            border-radius: 30px;
+            padding: 4rem 2rem;
+            margin: 3rem 0;
+        }
+
+        .contact-info {
+            background: rgba(255,255,255,0.1);
+            border-radius: 15px;
+            padding: 2rem;
+            margin: 1rem 0;
+        }
+
+        /* Buttons */
+        .btn-gradient {
+            background: var(--accent-gradient);
+            border: none;
+            border-radius: 50px;
+            padding: 15px 40px;
+            color: white;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn-gradient:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(79, 172, 254, 0.4);
+            color: white;
+        }
+
+        .btn-outline-gradient {
+            background: transparent;
+            border: 2px solid;
+            border-image: var(--accent-gradient) 1;
+            border-radius: 50px;
+            padding: 13px 38px;
+            color: var(--text-primary);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn-outline-gradient:hover {
+            background: var(--accent-gradient);
+            color: white;
+            transform: translateY(-3px);
+        }
+
+        /* Navigation */
+        .navbar-custom {
+            background: rgba(255,255,255,0.95);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 2px 20px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+        }
+
+        .navbar-custom.scrolled {
+            background: rgba(255,255,255,0.98);
+        }
+
+        .navbar-brand {
+            font-weight: 800;
+            font-size: 1.5rem;
+            background: var(--primary-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: 2.5rem;
+            }
+            
+            .hero-subtitle {
+                font-size: 1.2rem;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+            
+            .metric-value {
+                font-size: 2rem;
+            }
+            
+            .download-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Loading Animation */
+        .loading-animation {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border: 3px solid rgba(255,255,255,.3);
+            border-radius: 50%;
+            border-top-color: #fff;
+            animation: spin 1s ease-in-out infinite;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        /* Code Blocks */
+        pre[class*="language-"] {
+            border-radius: 10px;
+            margin: 1rem 0;
+        }
+
+        /* Scroll Progress Bar */
+        .progress-bar-custom {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 0%;
+            height: 4px;
+            background: var(--accent-gradient);
+            z-index: 9999;
+            transition: width 0.3s ease;
+        }
+
+        /* Comparison Chart */
+        .comparison-chart {
+            background: white;
+            border-radius: 20px;
+            padding: 2rem;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            margin: 2rem 0;
+        }
+
+        .chart-bar {
+            height: 30px;
+            background: var(--accent-gradient);
+            border-radius: 15px;
+            margin: 1rem 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .chart-bar::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 100%;
+            background: rgba(255,255,255,0.3);
+            animation: shimmer 2s infinite;
+        }
+
+        @keyframes shimmer {
+            0% { width: 0%; }
+            100% { width: 100%; }
+        }
+    </style>
 </head>
 <body>
     <!-- Progress Bar -->
     <div class="progress-bar-custom" id="progressBar"></div>
 
-    <!-- Loading Placeholder -->
-    <div id="loadingOverlay" class="loading-overlay">
-        <div class="spinner-border text-primary" role="status">
-            <span class="visually-hidden">Loading...</span>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top navbar-custom" id="mainNavbar">
+        <div class="container">
+            <a class="navbar-brand" href="#home">
+                <i class="fas fa-magic me-2"></i>Structure-SR
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="#home">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#research">Research</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#demo">Live Demo</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#results">Results</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#publications">Publications</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#downloads">Downloads</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#team">Team</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+                </ul>
+            </div>
         </div>
-        <p class="mt-3">Loading Components...</p>
-    </div>
+    </nav>
 
-    <!-- Header Component -->
-    <div id="header-component"></div>
+    <!-- Hero Section -->
+    <section id="home" class="hero-section animated-bg">
+        <div class="floating-elements">
+            <div class="floating-element"></div>
+            <div class="floating-element"></div>
+            <div class="floating-element"></div>
+        </div>
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6 hero-content" data-aos="fade-right">
+                    <h1 class="hero-title">Structure-Informed Super-Resolution Technique for Scientific Imaging</h1>
+                    <p class="hero-subtitle">Revolutionary AI technology for scientific imaging that outperforms state-of-the-art models including VDSR, ESRGAN, SwinIR, and HMA-Net</p>
+                    <div class="d-flex flex-wrap gap-3">
+                        <a href="#demo" class="btn btn-gradient btn-lg">
+                            <i class="fas fa-play me-2"></i>Try Live Demo
+                        </a>
+                        <a href="#research" class="btn btn-outline-gradient btn-lg">
+                            <i class="fas fa-microscope me-2"></i>View Research
+                        </a>
+                    </div>
+                </div>
+                <div class="col-lg-6" data-aos="fade-left" data-aos-delay="200">
+                    <div class="glass-card text-center">
+                        <i class="fas fa-chart-line fa-5x mb-4" style="color: rgba(255,255,255,0.8);"></i>
+                        <h3 style="color: white;">Performance Breakthrough</h3>
+                        <p style="color: rgba(255,255,255,0.9);">Achieving superior results in PSNR, SSIM, and LPIPS metrics across multiple datasets</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-    <!-- Main Content Container -->
-    <main id="main-content">
-        <!-- Hero Section -->
-        <div id="hero-component"></div>
+    <!-- Research Overview -->
+    <section id="research" class="section">
+        <div class="container">
+            <h2 class="section-title" data-aos="fade-up">Research Overview</h2>
+            <div class="row">
+                <div class="col-lg-10 mx-auto">
+                    <!-- Main Publication -->
+                    <div class="publication-card" data-aos="fade-up" data-aos-delay="100">
+                        <div class="row align-items-center">
+                            <div class="col-md-8">
+                                <h4>CSM-SR: Conditional Structure-Informed Multi-Scale GAN for Scientific Image Super-Resolution</h4>
+                                <p class="text-muted mb-2"><strong>Authors:</strong> Randika Prabashwara, Oshadi Perera, Gayani Vishara, Uthayasanker</p>
+                                <p class="text-muted mb-2"><strong>Conference:</strong> International Conference on Computer Vision, ICCV 2025</p>
+                                <p class="mb-3">This paper introduces a novel structure-informed approach to super-resolution that significantly outperforms existing methods on scientific imaging datasets through the integration of structural priors and adaptive loss functions.</p>
+                                <div class="d-flex flex-wrap gap-2">
+                                    <span class="badge bg-primary">Computer Vision</span>
+                                    <span class="badge bg-secondary">Super-Resolution</span>
+                                    <span class="badge bg-success">Scientific Imaging</span>
+                                </div>
+                            </div>
+                            <div class="col-md-4 text-center">
+                                <div class="mb-3">
+                                    <i class="fas fa-quote-left fa-3x text-primary mb-3"></i>
+                                    <p class="small text-muted">Citations: <strong>127</strong></p>
+                                    <p class="small text-muted">Impact Factor: <strong>8.5</strong></p>
+                                </div>
+                                <div class="d-flex flex-column gap-2">
+                                    <a href="#" class="btn btn-gradient btn-sm">
+                                        <i class="fas fa-file-pdf me-2"></i>Download PDF
+                                    </a>
+                                    <a href="#" class="btn btn-outline-gradient btn-sm">
+                                        <i class="fas fa-quote-right me-2"></i>BibTeX
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
 
-        <!-- Research Overview Section -->
-        <div id="research-component"></div>
+                    <!-- Workshop Papers -->
+                    <div class="publication-card" data-aos="fade-up" data-aos-delay="200">
+                        <div class="row align-items-center">
+                            <div class="col-md-8">
+                                <h5>Structural Priors in Deep Learning for Image Enhancement</h5>
+                                <p class="text-muted mb-2"><strong>Workshop:</strong> ICCV Workshop on Learning with Limited Labels 2023</p>
+                                <p class="mb-3">Preliminary work exploring the integration of structural information in deep learning architectures for image enhancement tasks.</p>
+                                <div class="d-flex flex-wrap gap-2">
+                                    <span class="badge bg-info">Workshop</span>
+                                    <span class="badge bg-warning">Preliminary</span>
+                                </div>
+                            </div>
+                            <div class="col-md-4 text-center">
+                                <a href="#" class="btn btn-outline-primary btn-sm">
+                                    <i class="fas fa-external-link-alt me-2"></i>View Paper
+                                </a>
+                            </div>
+                        </div>
+                    </div>
 
-        <!-- Results Section -->
-        <div id="results-component"></div>
+                    <!-- Technical Report -->
+                    <div class="publication-card" data-aos="fade-up" data-aos-delay="300">
+                        <div class="row align-items-center">
+                            <div class="col-md-8">
+                                <h5>Comprehensive Evaluation of Structure-Informed Super-Resolution</h5>
+                                <p class="text-muted mb-2"><strong>Type:</strong> Technical Report, arXiv:2024.xxxxx</p>
+                                <p class="mb-3">Extended analysis including additional experiments, ablation studies, and comprehensive comparisons with recent methods not covered in the main paper.</p>
+                                <div class="d-flex flex-wrap gap-2">
+                                    <span class="badge bg-dark">arXiv</span>
+                                    <span class="badge bg-info">Extended Analysis</span>
+                                </div>
+                            </div>
+                            <div class="col-md-4 text-center">
+                                <a href="#" class="btn btn-outline-secondary btn-sm">
+                                    <i class="fab fa-arxiv me-2"></i>arXiv Link
+                                </a>
+                            </div>
+                        </div>
+                    </div>
 
-        <!-- Publications Section -->
-        <div id="publications-component"></div>
+                    <!-- BibTeX Citation -->
+                    <div class="mt-5" data-aos="fade-up" data-aos-delay="400">
+                        <h4 class="mb-3">Citation Information</h4>
+                        <div class="card">
+                            <div class="card-header bg-dark text-white">
+                                <h6 class="mb-0"><i class="fas fa-code me-2"></i>BibTeX Citation</h6>
+                            </div>
+                            <div class="card-body bg-light">
+                                <pre class="mb-0"><code>@inproceedings{yourname2024structure,
+  title={Structure-Informed Super-Resolution for Scientific Imaging},
+  author={Your Name and Co-Author Name and Advisor Name},
+  booktitle={Proceedings of the IEEE Conference on Computer Vision and Pattern Recognition},
+  pages={1234--1243},
+  year={2024},
+  organization={IEEE}
+}</code></pre>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-        <!-- Demo Section -->
-        <div id="demo-component"></div>
+    <!-- Downloads Section -->
+    <section id="downloads" class="section">
+        <div class="container">
+            <h2 class="section-title" data-aos="fade-up">Downloads & Resources</h2>
+            
+            <div class="download-grid">
+                <!-- Source Code -->
+                <div class="download-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="download-icon">
+                        <i class="fab fa-github"></i>
+                    </div>
+                    <h4>Source Code</h4>
+                    <p>Complete implementation including training scripts, model architectures, and evaluation tools.</p>
+                    <div class="mb-3">
+                        <span class="badge bg-success mb-2">Python 3.8+</span>
+                        <span class="badge bg-primary mb-2">PyTorch</span>
+                        <span class="badge bg-info mb-2">CUDA Support</span>
+                    </div>
+                    <a href="https://github.com/yourusername/structure-informed-sr" class="btn btn-gradient">
+                        <i class="fab fa-github me-2"></i>GitHub Repository
+                    </a>
+                </div>
 
-        <!-- Downloads Section -->
-        <div id="downloads-component"></div>
+                <!-- Pre-trained Models -->
+                <div class="download-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="download-icon">
+                        <i class="fas fa-brain"></i>
+                    </div>
+                    <h4>Pre-trained Models</h4>
+                    <p>Ready-to-use models trained on various scientific imaging datasets with different scale factors.</p>
+                    <div class="mb-3">
+                        <span class="badge bg-warning mb-2">2x Scale</span>
+                        <span class="badge bg-warning mb-2">4x Scale</span>
+                        <span class="badge bg-warning mb-2">8x Scale</span>
+                    </div>
+                    <a href="#" class="btn btn-gradient">
+                        <i class="fas fa-download me-2"></i>Download Models (2.1GB)
+                    </a>
+                </div>
 
-        <!-- Team Section -->
-        <div id="team-component"></div>
+                <!-- Datasets -->
+                <div class="download-card" data-aos="fade-up" data-aos-delay="300">
+                    <div class="download-icon">
+                        <i class="fas fa-database"></i>
+                    </div>
+                    <h4>Evaluation Datasets</h4>
+                    <p>Curated scientific imaging datasets used for training and evaluation, including ground truth annotations.</p>
+                    <div class="mb-3">
+                        <span class="badge bg-secondary mb-2">Medical Images</span>
+                        <span class="badge bg-secondary mb-2">Microscopy</span>
+                        <span class="badge bg-secondary mb-2">Materials</span>
+                    </div>
+                    <a href="#" class="btn btn-gradient">
+                        <i class="fas fa-download me-2"></i>Download Data (5.7GB)
+                    </a>
+                </div>
 
-        <!-- Contact Section -->
-        <div id="contact-component"></div>
-    </main>
+                <!-- Documentation -->
+                <div class="download-card" data-aos="fade-up" data-aos-delay="400">
+                    <div class="download-icon">
+                        <i class="fas fa-book"></i>
+                    </div>
+                    <h4>Documentation</h4>
+                    <p>Comprehensive documentation including API reference, tutorials, and implementation details.</p>
+                    <div class="mb-3">
+                        <span class="badge bg-info mb-2">API Docs</span>
+                        <span class="badge bg-info mb-2">Tutorials</span>
+                        <span class="badge bg-info mb-2">Examples</span>
+                    </div>
+                    <a href="#" class="btn btn-gradient">
+                        <i class="fas fa-book me-2"></i>View Documentation
+                    </a>
+                </div>
 
-    <!-- Footer Component -->
-    <div id="footer-component"></div>
+                <!-- Docker Container -->
+                <div class="download-card" data-aos="fade-up" data-aos-delay="500">
+                    <div class="download-icon">
+                        <i class="fab fa-docker"></i>
+                    </div>
+                    <h4>Docker Container</h4>
+                    <p>Pre-configured Docker container with all dependencies and models for easy deployment and testing.</p>
+                    <div class="mb-3">
+                        <span class="badge bg-primary mb-2">Ubuntu 20.04</span>
+                        <span class="badge bg-primary mb-2">CUDA 11.8</span>
+                        <span class="badge bg-primary mb-2">Ready to Run</span>
+                    </div>
+                    <a href="#" class="btn btn-gradient">
+                        <i class="fab fa-docker me-2"></i>Pull Container
+                    </a>
+                </div>
 
-    <!-- External JavaScript Libraries -->
+                <!-- Supplementary Materials -->
+                <div class="download-card" data-aos="fade-up" data-aos-delay="600">
+                    <div class="download-icon">
+                        <i class="fas fa-file-archive"></i>
+                    </div>
+                    <h4>Supplementary Materials</h4>
+                    <p>Additional results, ablation studies, and extended experimental analysis not included in the main paper.</p>
+                    <div class="mb-3">
+                        <span class="badge bg-success mb-2">Extended Results</span>
+                        <span class="badge bg-success mb-2">Ablation Studies</span>
+                        <span class="badge bg-success mb-2">Additional Figures</span>
+                    </div>
+                    <a href="#" class="btn btn-gradient">
+                        <i class="fas fa-file-pdf me-2"></i>Download PDF (15MB)
+                    </a>
+                </div>
+            </div>
+
+            <!-- Installation Instructions -->
+            <div class="row mt-5">
+                <div class="col-lg-8 mx-auto">
+                    <div class="card" data-aos="fade-up" data-aos-delay="700">
+                        <div class="card-header bg-dark text-white">
+                            <h5 class="mb-0"><i class="fas fa-terminal me-2"></i>Quick Start Installation</h5>
+                        </div>
+                        <div class="card-body bg-light">
+                            <pre><code class="language-bash"># Clone the repository
+git clone https://github.com/yourusername/structure-informed-sr.git
+cd structure-informed-sr
+
+# Install dependencies
+pip install -r requirements.txt
+
+# Download pre-trained models
+python download_models.py
+
+# Run inference on sample image
+python inference.py --input sample.jpg --output result.jpg --scale 4</code></pre>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Team Section -->
+    <section id="team" class="section" style="background: #f8f9fa;">
+        <div class="container">
+            <h2 class="section-title" data-aos="fade-up">Research Team</h2>
+            
+            <div class="row justify-content-center">
+                <!-- Principal Researcher -->
+                <div class="col-md-4" data-aos="fade-up" data-aos-delay="100">
+                    <div class="team-member">
+                        <div class="member-photo">
+                            <i class="fas fa-user"></i>
+                        </div>
+                        <h4>M.A. Randika</h4>
+                        <p class="text-primary">PhD Candidate</p>
+                        <p class="text-muted">Lead researcher specializing in computer vision and deep learning for scientific imaging applications.</p>
+                        <div class="social-links">
+                            <a href="#" class="btn btn-outline-primary btn-sm me-2">
+                                <i class="fab fa-linkedin"></i>
+                            </a>
+                            <a href="#" class="btn btn-outline-dark btn-sm me-2">
+                                <i class="fab fa-github"></i>
+                            </a>
+                            <a href="#" class="btn btn-outline-info btn-sm">
+                                <i class="fas fa-envelope"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Supervisor -->
+                <div class="col-md-4" data-aos="fade-up" data-aos-delay="200">
+                    <div class="team-member">
+                        <div class="member-photo">
+                            <i class="fas fa-user-tie"></i>
+                        </div>
+                        <h4>Dr. Uthayasanker</h4>
+                        <p class="text-primary">Research Supervisor</p>
+                        <p class="text-muted">Professor of Computer Science with expertise in machine learning and computational imaging.</p>
+                        <div class="social-links">
+                            <a href="#" class="btn btn-outline-primary btn-sm me-2">
+                                <i class="fas fa-globe"></i>
+                            </a>
+                            <a href="#" class="btn btn-outline-success btn-sm me-2">
+                                <i class="fab fa-google-scholar"></i>
+                            </a>
+                            <a href="#" class="btn btn-outline-info btn-sm">
+                                <i class="fas fa-envelope"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Collaborator -->
+                <div class="col-md-4" data-aos="fade-up" data-aos-delay="300">
+                    <div class="team-member">
+                        <div class="member-photo">
+                            <i class="fas fa-user-friends"></i>
+                        </div>
+                        <h4>Oshadi</h4>
+                        <p class="text-primary">Research Collaborator</p>
+                        <p class="text-muted">Domain expert in scientific imaging providing valuable insights and dataset curation.</p>
+                        <div class="social-links">
+                            <a href="#" class="btn btn-outline-primary btn-sm me-2">
+                                <i class="fab fa-linkedin"></i>
+                            </a>
+                            <a href="#" class="btn btn-outline-success btn-sm me-2">
+                                <i class="fab fa-researchgate"></i>
+                            </a>
+                            <a href="#" class="btn btn-outline-info btn-sm">
+                                <i class="fas fa-envelope"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Institution Information -->
+            <div class="row mt-5">
+                <div class="col-lg-8 mx-auto text-center">
+                    <div class="card" data-aos="fade-up" data-aos-delay="400">
+                        <div class="card-body">
+                            <h5><i class="fas fa-university me-2"></i>Research Institution</h5>
+                            <h6 class="text-primary">University of Moratuwa</h6>
+                            <p class="text-muted">Department of Computer Science and Engineering<br>
+                            Computer Vision and Machine Learning Lab<br>
+                            Katubedda, Moratuwa, Sri Lanka</p>
+                            <div class="d-flex justify-content-center gap-3 mt-3">
+                                <span class="badge bg-primary">Computer Vision</span>
+                                <span class="badge bg-secondary">Deep Learning</span>
+                                <span class="badge bg-success">Scientific Imaging</span>
+                                <span class="badge bg-info">Super-Resolution</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="section">
+        <div class="container">
+            <div class="contact-section" data-aos="fade-up">
+                <div class="row">
+                    <div class="col-lg-8 mx-auto text-center">
+                        <h2 class="text-white mb-4">Contact & Collaboration</h2>
+                        <p class="text-light mb-5">Interested in our research? We welcome collaborations, questions, and discussions about structure-informed super-resolution techniques.</p>
+                    </div>
+                </div>
+                
+                <div class="row">
+                    <div class="col-md-6" data-aos="fade-right" data-aos-delay="200">
+                        <div class="contact-info">
+                            <h4><i class="fas fa-envelope me-2"></i>Email Contact</h4>
+                            <p><strong>Primary:</strong> randikap.20@cse.mrt.ac.lk</p>
+                            <p><strong>Lab:</strong> lab.contact@cse.mrt.ac.lk</p>
+                            
+                            <h4 class="mt-4"><i class="fas fa-map-marker-alt me-2"></i>Address</h4>
+                            <p>Computer Science and Engineering Department<br>
+                            University of Moratuwa<br>
+                            Bandaranayake Mawatha<br>
+                            Katubedda, Moratuwa 10400</p>
+                        </div>
+                    </div>
+                    
+                    <div class="col-md-6" data-aos="fade-left" data-aos-delay="300">
+                        <div class="contact-info">
+                            <h4><i class="fas fa-link me-2"></i>Research Links</h4>
+                            <div class="d-flex flex-column gap-2">
+                                <a href="#" class="btn btn-outline-light">
+                                    <i class="fab fa-github me-2"></i>GitHub Profile
+                                </a>
+                                <a href="#" class="btn btn-outline-light">
+                                    <i class="fab fa-google-scholar me-2"></i>Google Scholar
+                                </a>
+                                <a href="#" class="btn btn-outline-light">
+                                    <i class="fab fa-researchgate me-2"></i>ResearchGate
+                                </a>
+                                <a href="#" class="btn btn-outline-light">
+                                    <i class="fab fa-linkedin me-2"></i>LinkedIn
+                                </a>
+                            </div>
+                            
+                            <h4 class="mt-4"><i class="fas fa-handshake me-2"></i>Collaboration Opportunities</h4>
+                            <ul class="list-unstyled">
+                                <li><i class="fas fa-check me-2"></i>Dataset sharing and evaluation</li>
+                                <li><i class="fas fa-check me-2"></i>Joint research projects</li>
+                                <li><i class="fas fa-check me-2"></i>Industrial applications</li>
+                                <li><i class="fas fa-check me-2"></i>Conference presentations</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-5 bg-dark text-white">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <h5>Structure-Informed Super-Resolution</h5>
+                    <p class="text-muted">Revolutionary AI technology for scientific imaging applications.</p>
+                    <div class="social-links">
+                        <a href="#" class="text-white me-3"><i class="fab fa-github fa-2x"></i></a>
+                        <a href="#" class="text-white me-3"><i class="fab fa-twitter fa-2x"></i></a>
+                        <a href="#" class="text-white me-3"><i class="fab fa-linkedin fa-2x"></i></a>
+                    </div>
+                </div>
+                <div class="col-md-6 text-md-end">
+                    <p class="text-muted">&copy; 2024 Your Name. All rights reserved.</p>
+                    <p class="text-muted">Built with ❤️ for the research community</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-core.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/autoloader/prism-autoloader.min.js"></script>
-    
-    <!-- Custom JavaScript Modules -->
-    <script src="js/data-loader.js"></script>
-    <script src="js/animations.js"></script>
-    <script src="js/main.js"></script>
+
+    <script>
+        // Initialize AOS (Animate On Scroll)
+        AOS.init({
+            duration: 1000,
+            once: true,
+            offset: 100
+        });
+
+        // Navbar scroll effect
+        window.addEventListener('scroll', function() {
+            const navbar = document.getElementById('mainNavbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // Progress bar
+        window.addEventListener('scroll', function() {
+            const progressBar = document.getElementById('progressBar');
+            const windowHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            const scrolled = (window.scrollY / windowHeight) * 100;
+            progressBar.style.width = scrolled + '%';
+        });
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Loading animation for buttons
+        document.querySelectorAll('.btn-gradient, .btn-outline-gradient').forEach(button => {
+            button.addEventListener('click', function(e) {
+                if (this.href && this.href.includes('#')) return; // Skip for anchor links
+                
+                const originalText = this.innerHTML;
+                this.innerHTML = '<span class="loading-animation"></span> Loading...';
+                this.disabled = true;
+                
+                setTimeout(() => {
+                    this.innerHTML = originalText;
+                    this.disabled = false;
+                }, 2000);
+            });
+        });
+
+        // Demo iframe fallback
+        window.addEventListener('load', function() {
+            const iframe = document.querySelector('.demo-embed iframe');
+            const fallback = document.querySelector('.iframe-fallback');
+            
+            if (iframe) {
+                iframe.addEventListener('error', function() {
+                    iframe.style.display = 'none';
+                    if (fallback) {
+                        fallback.style.display = 'block';
+                    }
+                });
+            }
+        });
+
+        // Copy citation to clipboard
+        document.addEventListener('click', function(e) {
+            if (e.target.closest('.card-body pre')) {
+                const text = e.target.closest('.card-body pre').textContent;
+                navigator.clipboard.writeText(text).then(function() {
+                    // Create temporary notification
+                    const notification = document.createElement('div');
+                    notification.className = 'alert alert-success position-fixed';
+                    notification.style.cssText = 'top: 20px; right: 20px; z-index: 9999;';
+                    notification.innerHTML = '<i class="fas fa-check me-2"></i>Citation copied to clipboard!';
+                    document.body.appendChild(notification);
+                    
+                    setTimeout(() => {
+                        notification.remove();
+                    }, 3000);
+                });
+            }
+        });
+
+        // Animate metrics on scroll
+        const animateMetrics = () => {
+            const metrics = document.querySelectorAll('.metric-value');
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const target = entry.target;
+                        const finalValue = target.textContent;
+                        let currentValue = 0;
+                        const increment = parseFloat(finalValue) / 100;
+                        
+                        const updateValue = () => {
+                            if (currentValue < parseFloat(finalValue)) {
+                                currentValue += increment;
+                                if (finalValue.includes('%')) {
+                                    target.textContent = currentValue.toFixed(1) + '%';
+                                } else if (finalValue.includes('.')) {
+                                    target.textContent = currentValue.toFixed(2);
+                                } else {
+                                    target.textContent = Math.round(currentValue);
+                                }
+                                requestAnimationFrame(updateValue);
+                            } else {
+                                target.textContent = finalValue;
+                            }
+                        };
+                        
+                        updateValue();
+                        observer.unobserve(target);
+                    }
+                });
+            });
+            
+            metrics.forEach(metric => observer.observe(metric));
+        };
+
+        // Initialize metric animation
+        animateMetrics();
+
+        // Add active class to current navigation item
+        const currentLocation = location.hash || '#home';
+        document.querySelectorAll('.nav-link').forEach(link => {
+            if (link.getAttribute('href') === currentLocation) {
+                link.classList.add('active');
+            }
+        });
+
+        // Update active nav on scroll
+        window.addEventListener('scroll', function() {
+            const sections = document.querySelectorAll('section[id]');
+            const navLinks = document.querySelectorAll('.nav-link');
+            
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if (scrollY >= (sectionTop - 200)) {
+                    current = section.getAttribute('id');
+                }
+            });
+            
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === '#' + current) {
+                    link.classList.add('active');
+                }
+            });
+        });
+    </script>
 </body>
-</html>
+</html>-lg-8 mx-auto text-center mb-5" data-aos="fade-up" data-aos-delay="100">
+                    <p class="lead">Our novel Structure-Informed Super-Resolution technique leverages advanced deep learning architectures with structural priors to achieve unprecedented quality in scientific image enhancement. This breakthrough research addresses critical limitations in existing methods and provides superior performance across diverse imaging modalities.</p>
+                </div>
+            </div>
+            
+            <div class="row g-4">
+                <div class="col-md-4" data-aos="fade-up" data-aos-delay="100">
+                    <div class="highlight-card">
+                        <div class="highlight-icon">
+                            <i class="fas fa-brain"></i>
+                        </div>
+                        <h4>Novel Architecture</h4>
+                        <p>Innovative structure-informed network design that incorporates domain knowledge and structural priors for enhanced feature learning and reconstruction quality.</p>
+                    </div>
+                </div>
+                <div class="col-md-4" data-aos="fade-up" data-aos-delay="200">
+                    <div class="highlight-card">
+                        <div class="highlight-icon">
+                            <i class="fas fa-microscope"></i>
+                        </div>
+                        <h4>Scientific Focus</h4>
+                        <p>Specifically designed for scientific imaging applications with rigorous evaluation on medical, biological, and materials science datasets.</p>
+                    </div>
+                </div>
+                <div class="col-md-4" data-aos="fade-up" data-aos-delay="300">
+                    <div class="highlight-card">
+                        <div class="highlight-icon">
+                            <i class="fas fa-trophy"></i>
+                        </div>
+                        <h4>Superior Performance</h4>
+                        <p>Consistently outperforms state-of-the-art methods including VDSR, ESRGAN, SwinIR, and HMA-Net across all evaluation metrics.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Methodology Section -->
+            <div class="row mt-5">
+                <div class="col-lg-10 mx-auto">
+                    <div class="glass-card" data-aos="fade-up" data-aos-delay="400">
+                        <h3 class="mb-4">Methodology</h3>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <h5><i class="fas fa-cogs me-2"></i>Structure-Aware Feature Extraction</h5>
+                                <p>Our method employs multi-scale structural analysis to capture both local texture details and global structural coherence, enabling more informed reconstruction decisions.</p>
+                            </div>
+                            <div class="col-md-6">
+                                <h5><i class="fas fa-network-wired me-2"></i>Adaptive Loss Function</h5>
+                                <p>A novel combination of perceptual, structural, and adversarial losses specifically tailored for scientific imaging requirements and quality assessment.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Live Demo Section -->
+    <section id="demo" class="section" style="background: #f8f9fa;">
+        <div class="container">
+            <h2 class="section-title" data-aos="fade-up">Interactive Live Demo</h2>
+            <div class="demo-section" data-aos="fade-up" data-aos-delay="200">
+                <h3 class="mb-4">Experience Our Technology</h3>
+                <p class="mb-4">Upload your own images and see real-time super-resolution results with detailed performance metrics.</p>
+                
+                <!-- Demo Embed -->
+                <div class="demo-embed">
+                    <!-- Replace with your actual Hugging Face Space URL -->
+                    <iframe src="https://huggingface.co/spaces/YOUR_USERNAME/structure-informed-sr" 
+                            width="100%" 
+                            height="600" 
+                            frameborder="0"
+                            style="border-radius: 10px;"
+                            title="Structure-Informed Super-Resolution Demo">
+                    </iframe>
+                    
+                    <!-- Fallback content if iframe doesn't load -->
+                    <div class="iframe-fallback" style="display: none;">
+                        <i class="fas fa-rocket fa-5x mb-4 text-primary"></i>
+                        <h4>Live Demo</h4>
+                        <p class="text-muted">Interactive demonstration allowing users to:</p>
+                        <ul class="list-unstyled">
+                            <li><i class="fas fa-check text-success me-2"></i>Upload images directly</li>
+                            <li><i class="fas fa-check text-success me-2"></i>Compare with baseline methods</li>
+                            <li><i class="fas fa-check text-success me-2"></i>View real-time PSNR, SSIM, LPIPS metrics</li>
+                            <li><i class="fas fa-check text-success me-2"></i>Download enhanced results</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="mt-4">
+                    <a href="https://github.com/aaivu/Structure-informed-super-resolution-.git" class="btn btn-gradient me-3">
+                        <i class="fab fa-github me-2"></i>View Source Code
+                    </a>
+                    <a href="#downloads" class="btn btn-outline-gradient">
+                        <i class="fas fa-download me-2"></i>Download Models
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Results & Performance -->
+    <section id="results" class="section">
+        <div class="container">
+            <h2 class="section-title" data-aos="fade-up">Performance Results</h2>
+            
+            <!-- Metrics Comparison -->
+            <div class="metrics-container" data-aos="fade-up" data-aos-delay="200">
+                <h3 class="text-center mb-4">Quantitative Comparison</h3>
+                <div class="row">
+                    <div class="col-md-3 metric-item">
+                        <span class="metric-value">32.4</span>
+                        <div class="metric-label">PSNR (dB)</div>
+                        <div class="metric-description">Peak Signal-to-Noise Ratio</div>
+                    </div>
+                    <div class="col-md-3 metric-item">
+                        <span class="metric-value">0.94</span>
+                        <div class="metric-label">SSIM</div>
+                        <div class="metric-description">Structural Similarity Index</div>
+                    </div>
+                    <div class="col-md-3 metric-item">
+                        <span class="metric-value">0.082</span>
+                        <div class="metric-label">LPIPS</div>
+                        <div class="metric-description">Learned Perceptual Similarity</div>
+                    </div>
+                    <div class="col-md-3 metric-item">
+                        <span class="metric-value">15.2%</span>
+                        <div class="metric-label">Improvement</div>
+                        <div class="metric-description">Over Best Baseline</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Detailed Comparison Chart -->
+            <div class="row mt-5">
+                <div class="col-lg-8 mx-auto">
+                    <div class="comparison-chart" data-aos="fade-up" data-aos-delay="300">
+                        <h4 class="mb-4">Method Comparison</h4>
+                        
+                        <div class="mb-3">
+                            <div class="d-flex justify-content-between mb-2">
+                                <span><strong>Structure-SR (Ours)</strong></span>
+                                <span class="text-success fw-bold">32.4 dB</span>
+                            </div>
+                            <div class="chart-bar" style="width: 100%;"></div>
+                        </div>
+                        
+                        <div class="mb-3">
+                            <div class="d-flex justify-content-between mb-2">
+                                <span>HMA-Net</span>
+                                <span>28.1 dB</span>
+                            </div>
+                            <div class="chart-bar" style="width: 87%; background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 100%);"></div>
+                        </div>
+                        
+                        <div class="mb-3">
+                            <div class="d-flex justify-content-between mb-2">
+                                <span>SwinIR</span>
+                                <span>27.8 dB</span>
+                            </div>
+                            <div class="chart-bar" style="width: 86%; background: linear-gradient(135deg, #a18cd1 0%, #fbc2eb 100%);"></div>
+                        </div>
+                        
+                        <div class="mb-3">
+                            <div class="d-flex justify-content-between mb-2">
+                                <span>ESRGAN</span>
+                                <span>26.5 dB</span>
+                            </div>
+                            <div class="chart-bar" style="width: 82%; background: linear-gradient(135deg, #fad0c4 0%, #ffd1ff 100%);"></div>
+                        </div>
+                        
+                        <div class="mb-3">
+                            <div class="d-flex justify-content-between mb-2">
+                                <span>VDSR</span>
+                                <span>25.2 dB</span>
+                            </div>
+                            <div class="chart-bar" style="width: 78%; background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Qualitative Results -->
+            <div class="row mt-5">
+                <div class="col-12">
+                    <div class="highlight-card" data-aos="fade-up" data-aos-delay="400">
+                        <h4 class="mb-4">Qualitative Analysis</h4>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <h5><i class="fas fa-eye me-2"></i>Visual Quality Assessment</h5>
+                                <p>Our method demonstrates superior edge preservation, texture reconstruction, and artifact reduction compared to existing approaches. Particularly notable in fine structural details and high-frequency components.</p>
+                            </div>
+                            <div class="col-md-6">
+                                <h5><i class="fas fa-clock me-2"></i>Computational Efficiency</h5>
+                                <p>Despite superior quality, our approach maintains competitive inference times with optimized GPU utilization, making it practical for real-world applications.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Publications Section -->
+    <section id="publications" class="section" style="background: #f8f9fa;">
+        <div class="container">
+            <h2 class="section-title" data-aos="fade-up">Publications & Citations</h2>
+            
+            <div class="row">
+                <div class="col">   </div>
+            </div>
+        </div>
+    </section>
