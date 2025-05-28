@@ -300,13 +300,32 @@
         }
 
         /* Team Section */
+        .team-container {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        /* For responsive design */
+        @media (max-width: 1200px) {
+            .team-container {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .team-container {
+                grid-template-columns: 1fr;
+            }
+        }
+
         .team-member {
             text-align: center;
             padding: 2rem;
             background: white;
             border-radius: 15px;
             box-shadow: 0 5px 20px rgba(0,0,0,0.1);
-            margin-bottom: 2rem;
             transition: transform 0.3s ease;
         }
 
@@ -352,6 +371,7 @@
         .section {
             padding: 5rem 0;
         }
+
         /* Contact Section */
         .contact-section {
             background: var(--dark-gradient);
@@ -824,15 +844,38 @@ python inference.py --input sample.jpg --output result.jpg --scale 4</code></pre
         <div class="container">
             <h2 class="section-title" data-aos="fade-up">Research Team</h2>
             
-            <div class="row justify-content-center">
+            <div class="team-container">
+                <!-- Supervisor -->
+                <div data-aos="fade-up" data-aos-delay="200">
+                    <div class="team-member">
+                        <div class="member-photo">
+                            <i class="fas fa-user-tie"></i>
+                        </div>
+                        <h4>Dr. Uthayasanker Thayasivam</h4>
+                        <p class="text-primary">Research Supervisor</p>
+                        <p class="text-muted">Professor of Computer Science with expertise in machine learning and computational imaging.</p>
+                        <div class="social-links">
+                            <a href="#" class="btn btn-outline-primary btn-sm me-2">
+                                <i class="fas fa-globe"></i>
+                            </a>
+                            <a href="#" class="btn btn-outline-success btn-sm me-2">
+                                <i class="fab fa-google-scholar"></i>
+                            </a>
+                            <a href="#" class="btn btn-outline-info btn-sm">
+                                <i class="fas fa-envelope"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
                 <!-- Principal Researcher -->
-                <div class="col-md-4" data-aos="fade-up" data-aos-delay="100">
+                <div data-aos="fade-up" data-aos-delay="100">
                     <div class="team-member">
                         <div class="member-photo">
                             <img src="assets/images/randika.png" alt="M.A. Randika">
                         </div>
-                        <h4>M.A. Randika</h4>
-                        <p class="text-primary">PhD Candidate</p>
+                        <h4>Randika Prabashwara</h4>
+                        <p class="text-primary">Principal Researcher</p>
                         <p class="text-muted">Lead researcher specializing in computer vision and deep learning for scientific imaging applications.</p>
                         <div class="social-links">
                             <a href="#" class="btn btn-outline-primary btn-sm me-2">
@@ -848,13 +891,52 @@ python inference.py --input sample.jpg --output result.jpg --scale 4</code></pre
                     </div>
                 </div>
 
+                <!-- Add your third team member here -->
+                <div data-aos="fade-up" data-aos-delay="300">
+                    <div class="team-member">
+                        <div class="member-photo">
+                            <i class="fas fa-user"></i>
+                        </div>
+                        <h4>Team Member 3</h4>
+                        <p class="text-primary">Role</p>
+                        <p class="text-muted">Description...</p>
+                        <div class="social-links">
+                            <!-- Social links -->
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Add your fourth team member here -->
+                <div data-aos="fade-up" data-aos-delay="400">
+                    <div class="team-member">
+                        <div class="member-photo">
+                            <i class="fas fa-user"></i>
+                        </div>
+                        <h4>Team Member 4</h4>
+                        <p class="text-primary">Role</p>
+                        <p class="text-muted">Description...</p>
+                        <div class="social-links">
+                            <!-- Social links -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Team Section -->
+    <section id="team" class="section" style="background: #f8f9fa;">
+        <div class="container">
+            <h2 class="section-title" data-aos="fade-up">Research Team</h2>
+            
+            <div class="row justify-content-center">
+
                 <!-- Supervisor -->
                 <div class="col-md-4" data-aos="fade-up" data-aos-delay="200">
                     <div class="team-member">
                         <div class="member-photo">
                             <i class="fas fa-user-tie"></i>
                         </div>
-                        <h4>Dr. Uthayasanker</h4>
+                        <h4>Dr. Uthayasanker Thayasivam</h4>
                         <p class="text-primary">Research Supervisor</p>
                         <p class="text-muted">Professor of Computer Science with expertise in machine learning and computational imaging.</p>
                         <div class="social-links">
@@ -863,6 +945,29 @@ python inference.py --input sample.jpg --output result.jpg --scale 4</code></pre
                             </a>
                             <a href="#" class="btn btn-outline-success btn-sm me-2">
                                 <i class="fab fa-google-scholar"></i>
+                            </a>
+                            <a href="#" class="btn btn-outline-info btn-sm">
+                                <i class="fas fa-envelope"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Principal Researcher -->
+                <div class="col-md-4" data-aos="fade-up" data-aos-delay="100">
+                    <div class="team-member">
+                        <div class="member-photo">
+                            <img src="assets/images/randika.png" alt="M.A. Randika">
+                        </div>
+                        <h4>Randika Prabashwara</h4>
+                        <p class="text-primary">Principal Researcher</p>
+                        <p class="text-muted">Lead researcher specializing in computer vision and deep learning for scientific imaging applications.</p>
+                        <div class="social-links">
+                            <a href="#" class="btn btn-outline-primary btn-sm me-2">
+                                <i class="fab fa-linkedin"></i>
+                            </a>
+                            <a href="#" class="btn btn-outline-dark btn-sm me-2">
+                                <i class="fab fa-github"></i>
                             </a>
                             <a href="#" class="btn btn-outline-info btn-sm">
                                 <i class="fas fa-envelope"></i>
