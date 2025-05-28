@@ -18,7 +18,7 @@ class DataLoader {
     }
 
     static async loadTeamData() {
-        const data = await this.loadJSON('data/team.json');
+        const data = await this.loadJSON('../data/team.json');
         if (data) {
             console.log('Team data loaded successfully:', data);
         }
@@ -26,7 +26,7 @@ class DataLoader {
     }
 
     static async loadPublicationsData() {
-        const data = await this.loadJSON('data/publications.json');
+        const data = await this.loadJSON('../data/publications.json');
         if (data) {
             console.log('Publications data loaded successfully:', data);
         }
@@ -34,7 +34,7 @@ class DataLoader {
     }
 
     static async loadResultsData() {
-        const data = await this.loadJSON('data/results.json');
+        const data = await this.loadJSON('../data/results.json');
         if (data) {
             console.log('Results data loaded successfully:', data);
         }
@@ -42,7 +42,7 @@ class DataLoader {
     }
 
     static async loadConfigData() {
-        const data = await this.loadJSON('data/config.json');
+        const data = await this.loadJSON('../data/config.json');
         if (data) {
             console.log('Config data loaded successfully:', data);
         }
@@ -81,7 +81,7 @@ class DataLoader {
     }
 
     // Utility method to handle image loading with fallbacks
-    static handleImageLoad(imgElement, fallbackSrc = 'assets/images/placeholder.jpg') {
+    static handleImageLoad(imgElement, fallbackSrc = '../assets/images/randika.jpg') {
         return new Promise((resolve) => {
             imgElement.onload = () => resolve(true);
             imgElement.onerror = () => {
