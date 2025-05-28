@@ -1,227 +1,265 @@
-// main.js - Core functionality and initialization
-document.addEventListener('DOMContentLoaded', function() {
-    
-    // Initialize all components
-    initializeNavigation();
-    initializeScrollEffects();
-    initializeProgressBars();
-    initializeContactForm();
-    initializeSmoothScrolling();
-    
-    // Initialize AOS (Animate On Scroll)
-    if (typeof AOS !== 'undefined') {
-        AOS.init({
-            duration: 800,
-            easing: 'ease-in-out',
-            once: true,
-            offset: 100
-        });
+// Main JavaScript file for SISR Project
+class SISRApp {
+    constructor() {
+        this.components = {};
+        this.data = {};
+        this.init();
     }
-    
-    // Initialize Bootstrap tooltips and popovers
-    if (typeof bootstrap !== 'undefined') {
-        var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
-        var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
-            return new bootstrap.Tooltip(tooltipTriggerEl);
-        });
-    }
-});
 
-// Navigation functionality
-function initializeNavigation() {
-    const navbar = document.getElementById('mainNavbar');
-    const navbarToggler = document.querySelector('.navbar-toggler');
-    const navLinks = document.querySelectorAll('.navbar-nav .nav-link');
-    
-    // Navbar scroll effect
-    window.addEventListener('scroll', function() {
-        if (window.scrollY > 50) {
-            navbar?.classList.add('scrolled');
-        } else {
-            navbar?.classList.remove('scrolled');
+    async init() {
+        try {
+            // Load components first
+            await this.loadComponents();
+            
+            // Load data
+            await this.loadData();
+            
+            // Initialize animations
+            this.initializeAnimations();
+            
+            // Setup event listeners
+            this.setupEventListeners();
+            
+            console.log('SISR App initialized successfully');
+        } catch (error) {
+            console.error('Failed to initialize SISR App:', error);
         }
-    });
-    
-    // Close mobile menu when clicking on nav links
-    navLinks.forEach(link => {
-        link.addEventListener('click', () => {
-            if (navbarToggler && !navbarToggler.classList.contains('collapsed')) {
-                navbarToggler.click();
-            }
-        });
-    });
-    
-    // Active nav link highlighting
-    updateActiveNavLink();
-    window.addEventListener('scroll', updateActiveNavLink);
-}
-
-// Update active navigation link based on scroll position
-function updateActiveNavLink() {
-    const sections = document.querySelectorAll('section[id]');
-    const navLinks = document.querySelectorAll('.navbar-nav .nav-link');
-    
-    let current = '';
-    sections.forEach(section => {
-        const sectionTop = section.offsetTop;
-        const sectionHeight = section.clientHeight;
-        if (window.scrollY >= (sectionTop - 200)) {
-            current = section.getAttribute('id');
-        }
-    });
-    
-    navLinks.forEach(link => {
-        link.classList.remove('active');
-        if (link.getAttribute('href') === `#${current}`) {
-            link.classList.add('active');
-        }
-    });
-}
-
-// Smooth scrolling for anchor links
-function initializeSmoothScrolling() {
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function (e) {
-            e.preventDefault();
-            const target = document.querySelector(this.getAttribute('href'));
-            if (target) {
-                const offsetTop = target.offsetTop - 80; // Account for fixed navbar
-                window.scrollTo({
-                    top: offsetTop,
-                    behavior: 'smooth'
-                });
-            }
-        });
-    });
-}
-
-// Progress bars animation
-function initializeProgressBars() {
-    const progressBars = document.querySelectorAll('.progress-bar');
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                const progressBar = entry.target;
-                const value = progressBar.getAttribute('aria-valuenow');
-                progressBar.style.width = value + '%';
-            }
-        });
-    }, { threshold: 0.5 });
-    
-    progressBars.forEach(bar => {
-        bar.style.width = '0%';
-        observer.observe(bar);
-    });
-}
-
-// Scroll effects and animations
-function initializeScrollEffects() {
-    // Parallax effect for hero section
-    const heroSection = document.querySelector('.hero-section, #home');
-    if (heroSection) {
-        window.addEventListener('scroll', () => {
-            const scrolled = window.pageYOffset;
-            const rate = scrolled * -0.5;
-            heroSection.style.transform = `translateY(${rate}px)`;
-        });
     }
-    
-    // Fade in animation for cards
-    const cards = document.querySelectorAll('.card, .feature-card');
-    const cardObserver = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('fade-in');
-            }
-        });
-    }, { threshold: 0.1 });
-    
-    cards.forEach(card => observer.observe(card));
-}
 
-// Contact form handling
-function initializeContactForm() {
-    const contactForm = document.getElementById('contactForm');
-    if (contactForm) {
-        contactForm.addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            // Basic form validation
-            const formData = new FormData(contactForm);
-            const name = formData.get('name');
-            const email = formData.get('email');
-            const message = formData.get('message');
-            
-            if (!name || !email || !message) {
-                showAlert('Please fill in all required fields.', 'warning');
-                return;
+    async loadComponents() {
+        const componentLoader = new ComponentLoader();
+        
+        const componentPaths = {
+            header: './components/header.html',
+            hero: './components/hero.html',
+            research: './components/research.html',
+            footer: './components/footer.html'
+        };
+
+        for (const [name, path] of Object.entries(componentPaths)) {
+            try {
+                this.components[name] = await componentLoader.loadComponent(path);
+                console.log(`Component '${name}' loaded successfully`);
+            } catch (error) {
+                console.error(`Failed to load component '${name}':`, error);
             }
-            
-            if (!isValidEmail(email)) {
-                showAlert('Please enter a valid email address.', 'warning');
-                return;
-            }
-            
-            // Simulate form submission
-            showAlert('Thank you for your message! We will get back to you soon.', 'success');
-            contactForm.reset();
-        });
+        }
     }
-}
 
-// Utility functions
-function isValidEmail(email) {
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    return emailRegex.test(email);
-}
+    async loadData() {
+        const dataLoader = new DataLoader();
+        
+        try {
+            this.data.config = await dataLoader.loadJSON('./data/config.json');
+            this.data.content = await dataLoader.loadJSON('./data/content.json');
+            this.data.team = await dataLoader.loadJSON('./data/team.json');
+            
+            // Populate content into components
+            this.populateContent();
+        } catch (error) {
+            console.error('Failed to load data:', error);
+        }
+    }
 
-function showAlert(message, type = 'info') {
-    const alertDiv = document.createElement('div');
-    alertDiv.className = `alert alert-${type} alert-dismissible fade show`;
-    alertDiv.innerHTML = `
-        ${message}
-        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
-    `;
-    
-    const container = document.querySelector('.container');
-    if (container) {
-        container.insertBefore(alertDiv, container.firstChild);
+    populateContent() {
+        // Update hero section
+        const heroSection = document.getElementById('home');
+        if (heroSection && this.data.content) {
+            const heroTitle = heroSection.querySelector('h1');
+            const heroDescription = heroSection.querySelector('p');
+            
+            if (this.data.content.hero) {
+                if (heroTitle) heroTitle.textContent = this.data.content.hero.title || heroTitle.textContent;
+                if (heroDescription) heroDescription.textContent = this.data.content.hero.description || heroDescription.textContent;
+            }
+        }
+
+        // Update research section
+        const researchSection = document.getElementById('research');
+        if (researchSection && this.data.content && this.data.content.research) {
+            const researchTitle = researchSection.querySelector('h2');
+            const researchContent = researchSection.querySelector('.research-content');
+            
+            if (researchTitle) researchTitle.textContent = this.data.content.research.title || researchTitle.textContent;
+            
+            if (researchContent && this.data.content.research.items) {
+                researchContent.innerHTML = this.data.content.research.items.map(item => `
+                    <div class="research-item">
+                        <h3>${item.title}</h3>
+                        <p>${item.description}</p>
+                    </div>
+                `).join('');
+            }
+        }
+
+        // Update team section
+        const teamSection = document.getElementById('team');
+        if (teamSection && this.data.team) {
+            const teamGrid = teamSection.querySelector('.team-grid');
+            if (teamGrid && this.data.team.members) {
+                teamGrid.innerHTML = this.data.team.members.map(member => `
+                    <div class="team-member">
+                        <img src="${member.image || './assets/images/default-avatar.png'}" alt="${member.name}">
+                        <h3>${member.name}</h3>
+                        <p>${member.role}</p>
+                        <p>${member.description || ''}</p>
+                    </div>
+                `).join('');
+            }
+        }
+
+        // Update downloads section
+        const downloadsSection = document.getElementById('downloads');
+        if (downloadsSection && this.data.content && this.data.content.downloads) {
+            const downloadsList = downloadsSection.querySelector('.downloads-list');
+            if (downloadsList && this.data.content.downloads.items) {
+                downloadsList.innerHTML = this.data.content.downloads.items.map(item => `
+                    <div class="download-item">
+                        <h3>${item.title}</h3>
+                        <p>${item.description}</p>
+                        <a href="${item.url}" class="download-btn" download>Download</a>
+                    </div>
+                `).join('');
+            }
+        }
+    }
+
+    initializeAnimations() {
+        if (window.AnimationManager) {
+            this.animationManager = new AnimationManager();
+            this.animationManager.init();
+        }
+    }
+
+    setupEventListeners() {
+        // Mobile navigation toggle
+        const navToggle = document.querySelector('.nav-toggle');
+        const navMenu = document.querySelector('.nav-menu');
+        
+        if (navToggle && navMenu) {
+            navToggle.addEventListener('click', () => {
+                navMenu.classList.toggle('active');
+            });
+        }
+
+        // Smooth scrolling for navigation links
+        const navLinks = document.querySelectorAll('a[href^="#"]');
+        navLinks.forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                const targetId = link.getAttribute('href');
+                const targetSection = document.querySelector(targetId);
+                
+                if (targetSection) {
+                    targetSection.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                    
+                    // Close mobile menu if open
+                    if (navMenu) {
+                        navMenu.classList.remove('active');
+                    }
+                }
+            });
+        });
+
+        // Progress bar update on scroll
+        window.addEventListener('scroll', this.updateProgressBar.bind(this));
+        
+        // Contact form submission
+        const contactForm = document.querySelector('#contactForm');
+        if (contactForm) {
+            contactForm.addEventListener('submit', this.handleContactForm.bind(this));
+        }
+    }
+
+    updateProgressBar() {
+        const progressBar = document.getElementById('progressBar');
+        if (progressBar) {
+            const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+            const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            const scrolled = (winScroll / height) * 100;
+            progressBar.style.width = scrolled + '%';
+        }
+    }
+
+    handleContactForm(e) {
+        e.preventDefault();
+        
+        const formData = new FormData(e.target);
+        const data = Object.fromEntries(formData);
+        
+        // Here you would typically send the data to a server
+        console.log('Contact form submitted:', data);
+        
+        // Show success message
+        this.showMessage('Thank you for your message! We will get back to you soon.', 'success');
+        
+        // Reset form
+        e.target.reset();
+    }
+
+    showMessage(message, type = 'info') {
+        const messageDiv = document.createElement('div');
+        messageDiv.className = `message message-${type}`;
+        messageDiv.textContent = message;
+        
+        document.body.appendChild(messageDiv);
+        
         setTimeout(() => {
-            alertDiv.remove();
+            messageDiv.remove();
         }, 5000);
     }
-}
 
-// Back to top button
-function initializeBackToTop() {
-    const backToTopButton = document.createElement('button');
-    backToTopButton.innerHTML = '↑';
-    backToTopButton.className = 'btn btn-primary btn-back-to-top';
-    backToTopButton.style.cssText = `
-        position: fixed;
-        bottom: 20px;
-        right: 20px;
-        width: 50px;
-        height: 50px;
-        border-radius: 50%;
-        display: none;
-        z-index: 1000;
-    `;
-    
-    document.body.appendChild(backToTopButton);
-    
-    window.addEventListener('scroll', () => {
-        if (window.scrollY > 300) {
-            backToTopButton.style.display = 'block';
-        } else {
-            backToTopButton.style.display = 'none';
+    // Public methods for external access
+    getComponent(name) {
+        return this.components[name];
+    }
+
+    getData(key) {
+        return this.data[key];
+    }
+
+    updateContent(section, content) {
+        if (this.data.content) {
+            this.data.content[section] = { ...this.data.content[section], ...content };
+            this.populateContent();
         }
-    });
-    
-    backToTopButton.addEventListener('click', () => {
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-    });
+    }
 }
 
-// Initialize back to top button
-document.addEventListener('DOMContentLoaded', initializeBackToTop);
+// Component Loader Class
+class ComponentLoader {
+    async loadComponent(path) {
+        try {
+            const response = await fetch(path);
+            if (!response.ok) {
+                throw new Error(`Failed to load component: ${response.status}`);
+            }
+            return await response.text();
+        } catch (error) {
+            console.error(`Error loading component from ${path}:`, error);
+            throw error;
+        }
+    }
+
+    async injectComponent(containerId, componentHTML) {
+        const container = document.getElementById(containerId);
+        if (container) {
+            container.innerHTML = componentHTML;
+        } else {
+            console.warn(`Container with ID '${containerId}' not found`);
+        }
+    }
+}
+
+// Initialize the app when DOM is loaded
+document.addEventListener('DOMContentLoaded', () => {
+    window.sisrApp = new SISRApp();
+});
+
+// Export for module usage
+if (typeof module !== 'undefined' && module.exports) {
+    module.exports = { SISRApp, ComponentLoader };
+}
