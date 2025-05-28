@@ -300,6 +300,7 @@
         }
 
         /* Team Section */
+        /* Team Section */
         .team-container {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
@@ -321,6 +322,12 @@
             }
         }
 
+        /* ADD THIS: Make the wrapper div also flex */
+        .team-container > div {
+            display: flex;
+            flex-direction: column;
+        }
+
         .team-member {
             text-align: center;
             padding: 2rem;
@@ -331,6 +338,7 @@
             display: flex;
             flex-direction: column;
             justify-content: space-between;
+            flex: 1; /* ADD THIS: Make it take full height */
         }
 
         .team-member:hover {
