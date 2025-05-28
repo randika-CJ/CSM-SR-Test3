@@ -6,16 +6,16 @@
 class CSMSRApp {
     constructor() {
         this.components = [
-            { id: 'header-component', file: '../docs/components/header.html' },
-            { id: 'hero-component', file: '../docs/components/hero.html' },
-            { id: 'research-component', file: '../docs/components/research.html' },
-            { id: 'results-component', file: '../docs/components/results.html' },
-            { id: 'publications-component', file: '../docs/components/publications.html' },
-            { id: 'demo-component', file: '../docs/components/demo.html' },
-            { id: 'downloads-component', file: '../docs/components/download.html' },
-            { id: 'team-component', file: '../docs/components/team.html' },
-            { id: 'contact-component', file: '../docs/components/contact.html' },
-            { id: 'footer-component', file: '../docs/components/footer.html' }
+            { id: 'header-component', file: 'components/header.html' },
+            { id: 'hero-component', file: 'components/hero.html' },
+            { id: 'research-component', file: 'components/research.html' },
+            { id: 'results-component', file: 'components/results.html' },
+            { id: 'publications-component', file: 'components/publications.html' },
+            { id: 'demo-component', file: 'components/demo.html' },
+            { id: 'downloads-component', file: 'components/download.html' },
+            { id: 'team-component', file: 'components/team.html' },
+            { id: 'contact-component', file: 'components/contact.html' },
+            { id: 'footer-component', file: 'components/footer.html' }
         ];
         this.loadedComponents = 0;
         this.totalComponents = this.components.length;
