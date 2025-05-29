@@ -666,7 +666,7 @@
             <!-- Research Introduction -->
             <div class="row mb-5">
                 <div class="col-lg-10 mx-auto text-center">
-                    <p class="lead">Our novel Structure-Informed Super-Resolution technique leverages advanced deep learning architectures with structural priors to achieve unprecedented quality in scientific image enhancement. This breakthrough research addresses critical limitations in existing methods and provides superior performance across diverse imaging modalities.</p>
+                    <p class="lead">Our novel CSM-SR (Conditional Structure-Informed Multi-Scale Super-Resolution GAN) framework integrates multi-scale feature processing and structure-aware conditioning to enhance super-resolution performance in scientific imaging. This breakthrough research addresses critical limitations in preserving fine structural details, particularly in microscopy applications, while achieving superior perceptual realism.</p>
                 </div>
             </div>
             
@@ -677,8 +677,8 @@
                         <div class="highlight-icon">
                             <i class="fas fa-brain"></i>
                         </div>
-                        <h4>Novel Architecture</h4>
-                        <p>Innovative structure-informed network design that incorporates domain knowledge and structural priors for enhanced feature learning and reconstruction quality.</p>
+                        <h4>Advanced GAN Architecture</h4>
+                        <p>Employs Residual-in-Residual Dense Blocks (RRDB), Super-Resolution Dense Blocks (SRDB), and PixelShuffle-based upsampling, conditioned on pre-trained EfficientNet features for contextual information capture.</p>
                     </div>
                 </div>
                 <div class="col-md-4" data-aos="fade-up" data-aos-delay="200">
@@ -686,8 +686,8 @@
                         <div class="highlight-icon">
                             <i class="fas fa-microscope"></i>
                         </div>
-                        <h4>Scientific Focus</h4>
-                        <p>Specifically designed for scientific imaging applications with rigorous evaluation on medical, biological, and materials science datasets.</p>
+                        <h4>Scientific Imaging Focus</h4>
+                        <p>Specifically designed for high-resolution structural preservation in scientific imaging, including scanning electron microscopy (SEM) images for nanoscience and materials research applications.</p>
                     </div>
                 </div>
                 <div class="col-md-4" data-aos="fade-up" data-aos-delay="300">
@@ -695,8 +695,8 @@
                         <div class="highlight-icon">
                             <i class="fas fa-trophy"></i>
                         </div>
-                        <h4>Superior Performance</h4>
-                        <p>Consistently outperforms state-of-the-art methods including VDSR, ESRGAN, SwinIR, and HMA-Net across all evaluation metrics.</p>
+                        <h4>Outstanding Performance</h4>
+                        <p>Achieves up to 2.8dB higher PSNR, 20% increase in SSIM, and 20% reduction in LPIPS compared to state-of-the-art methods, setting new standards for high-fidelity structural preservation.</p>
                     </div>
                 </div>
             </div>
@@ -706,14 +706,28 @@
                 <div class="col-lg-10 mx-auto">
                     <div class="glass-card" data-aos="fade-up" data-aos-delay="400">
                         <h3 class="mb-4">Methodology</h3>
-                        <div class="row">
+                        <div class="row g-4">
                             <div class="col-md-6">
-                                <h5><i class="fas fa-cogs me-2"></i>Structure-Aware Feature Extraction</h5>
-                                <p>Our method employs multi-scale structural analysis to capture both local texture details and global structural coherence, enabling more informed reconstruction decisions.</p>
+                                <h5><i class="fas fa-layer-group me-2"></i>Generator Architecture</h5>
+                                <p><strong>Three-Module Design:</strong> Shallow Feature Extraction, Multi-Scale Feature Processing with Encoder Conditioning, and High-Resolution Image Reconstruction. Integrates hierarchical multi-scale learning with adaptive feature fusion using RRDBs and SRDBs for enhanced structural fidelity.</p>
                             </div>
                             <div class="col-md-6">
-                                <h5><i class="fas fa-network-wired me-2"></i>Adaptive Loss Function</h5>
-                                <p>A novel combination of perceptual, structural, and adversarial losses specifically tailored for scientific imaging requirements and quality assessment.</p>
+                                <h5><i class="fas fa-brain me-2"></i>Encoder-Based Feature Conditioning</h5>
+                                <p><strong>Pre-trained EfficientNet:</strong> Extracts high-quality features directly from LR images without requiring HR feature maps. Generates encoder-conditioned features that embed global structural and semantic information effectively.</p>
+                            </div>
+                            <div class="col-md-6">
+                                <h5><i class="fas fa-eye me-2"></i>Multi-Scale PatchGAN Discriminator</h5>
+                                <p><strong>Progressive Architecture:</strong> Evaluates features across multiple resolutions to ensure fine-grained texture realism and global structural coherence, overcoming limitations of standard PatchGAN approaches.</p>
+                            </div>
+                            <div class="col-md-6">
+                                <h5><i class="fas fa-balance-scale me-2"></i>Semantic Structural Loss (SSL)</h5>
+                                <p><strong>Hybrid Loss Function:</strong> Combines Content Preservation Loss (perceptual + contextual), Structural Fidelity Loss (gradient + SSIM), and Texture Preservation Loss for comprehensive quality optimization.</p>
+                            </div>
+                        </div>
+                        <div class="row mt-4">
+                            <div class="col-12">
+                                <h5><i class="fas fa-arrows-alt me-2"></i>Adaptive Feature Fusion</h5>
+                                <p><strong>Dynamic Integration:</strong> The Adaptive Feature Fusion (AFF) module combines multi-scale features (capturing local high-frequency details) with encoder-conditioned features (providing global semantic priors) using learnable weights α and β. This ensures both texture fidelity and structural coherence through PixelShuffle-based progressive upsampling for artifact-free reconstruction.</p>
                             </div>
                         </div>
                     </div>
@@ -727,7 +741,7 @@
                         <div class="row align-items-center">
                             <div class="col-md-8">
                                 <h4>CSM-SR: Conditional Structure-Informed Multi-Scale GAN for Scientific Image Super-Resolution</h4>
-                                <p class="text-muted mb-2"><strong>Authors:</strong> Randika Prabashwara, Oshadi Perera, Gayani Vishara, Uthayasanker</p>
+                                <p class="text-muted mb-2"><strong>Authors:</strong> Randika Prabashwara, Oshadi Perera, Gayani Vishara, Uthayasanker Thayasivam </p>
                                 <p class="text-muted mb-2"><strong>Conference:</strong> International Conference on Computer Vision, ICCV 2025</p>
                                 <p class="mb-3">This paper introduces a novel structure-informed approach to super-resolution that significantly outperforms existing methods on scientific imaging datasets through the integration of structural priors and adaptive loss functions.</p>
                                 <div class="d-flex flex-wrap gap-2">
@@ -802,12 +816,12 @@
                                 <h6 class="mb-0"><i class="fas fa-code me-2"></i>BibTeX Citation</h6>
                             </div>
                             <div class="card-body bg-light">
-                                <pre class="mb-0"><code>@inproceedings{yourname2024structure,
+                                <pre class="mb-0"><code>@inproceedings{Randika2025structure,
   title={Structure-Informed Super-Resolution for Scientific Imaging},
-  author={Your Name and Co-Author Name and Advisor Name},
-  booktitle={Proceedings of the IEEE Conference on Computer Vision and Pattern Recognition},
+  author={Randika Prabashwara and Oshadi Perera and Gayani Vishara and Uthayasanker Thayasivam},
+  booktitle={Proceedings of the International Conference of Computer Vision},
   pages={1234--1243},
-  year={2024},
+  year={2025},
   organization={IEEE}
 }</code></pre>
                             </div>
@@ -829,7 +843,7 @@
                 <!-- Demo Embed -->
                 <div class="demo-embed">
                     <!-- Replace with your actual Hugging Face Space URL -->
-                    <iframe src="https://huggingface.co/spaces/YOUR_USERNAME/structure-informed-sr" 
+                    <iframe src="https://huggingface.co/spaces/Randika/structure-informed-sr" 
                             width="100%" 
                             height="600" 
                             frameborder="0"
@@ -852,7 +866,7 @@
                 </div>
                 
                 <div class="mt-4">
-                    <a href="https://github.com/aaivu/Structure-informed-super-resolution-.git" class="btn btn-gradient me-3">
+                    <a href="https://github.com/randika-CJ/CSM-SR-Test3/tree/main/src" class="btn btn-gradient me-3">
                         <i class="fab fa-github me-2"></i>View Source Code
                     </a>
                     <a href="#downloads" class="btn btn-outline-gradient">
@@ -873,22 +887,22 @@
                 <h3 class="text-center mb-4">Quantitative Comparison</h3>
                 <div class="row">
                     <div class="col-md-3 metric-item">
-                        <span class="metric-value">32.4</span>
+                        <span class="metric-value">37.982</span>
                         <div class="metric-label">PSNR (dB)</div>
                         <div class="metric-description">Peak Signal-to-Noise Ratio</div>
                     </div>
                     <div class="col-md-3 metric-item">
-                        <span class="metric-value">0.94</span>
+                        <span class="metric-value"> 0.956</span>
                         <div class="metric-label">SSIM</div>
                         <div class="metric-description">Structural Similarity Index</div>
                     </div>
                     <div class="col-md-3 metric-item">
-                        <span class="metric-value">0.082</span>
+                        <span class="metric-value">0.173</span>
                         <div class="metric-label">LPIPS</div>
                         <div class="metric-description">Learned Perceptual Similarity</div>
                     </div>
                     <div class="col-md-3 metric-item">
-                        <span class="metric-value">15.2%</span>
+                        <span class="metric-value">15.73%</span>
                         <div class="metric-label">Improvement</div>
                         <div class="metric-description">Over Best Baseline</div>
                     </div>
@@ -904,7 +918,7 @@
                         <div class="mb-3">
                             <div class="d-flex justify-content-between mb-2">
                                 <span><strong>CSM-SR (Ours)</strong></span>
-                                <span class="text-success fw-bold">32.4 dB</span>
+                                <span class="text-success fw-bold">38.791 dB</span>
                             </div>
                             <div class="chart-bar" style="width: 100%;"></div>
                         </div>
@@ -912,7 +926,7 @@
                         <div class="mb-3">
                             <div class="d-flex justify-content-between mb-2">
                                 <span>HMA-Net</span>
-                                <span>28.1 dB</span>
+                                <span>33.340 dB</span>
                             </div>
                             <div class="chart-bar" style="width: 87%; background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 100%);"></div>
                         </div>
@@ -920,7 +934,7 @@
                         <div class="mb-3">
                             <div class="d-flex justify-content-between mb-2">
                                 <span>SwinIR</span>
-                                <span>27.8 dB</span>
+                                <span>32.506 dB</span>
                             </div>
                             <div class="chart-bar" style="width: 86%; background: linear-gradient(135deg, #a18cd1 0%, #fbc2eb 100%);"></div>
                         </div>
@@ -928,7 +942,7 @@
                         <div class="mb-3">
                             <div class="d-flex justify-content-between mb-2">
                                 <span>ESRGAN</span>
-                                <span>26.5 dB</span>
+                                <span>31.249 dB</span>
                             </div>
                             <div class="chart-bar" style="width: 82%; background: linear-gradient(135deg, #fad0c4 0%, #ffd1ff 100%);"></div>
                         </div>
@@ -936,7 +950,7 @@
                         <div class="mb-3">
                             <div class="d-flex justify-content-between mb-2">
                                 <span>VDSR</span>
-                                <span>25.2 dB</span>
+                                <span>26.979 dB</span>
                             </div>
                             <div class="chart-bar" style="width: 78%; background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);"></div>
                         </div>
@@ -945,18 +959,37 @@
             </div>
 
             <!-- Qualitative Results -->
+            <!-- Qualitative Results -->
             <div class="row mt-5">
                 <div class="col-12">
                     <div class="highlight-card" data-aos="fade-up" data-aos-delay="400">
-                        <h4 class="mb-4">Qualitative Analysis</h4>
-                        <div class="row">
+                        <h4 class="mb-4">Experimental Results & Analysis</h4>
+                        <div class="row g-4">
                             <div class="col-md-6">
-                                <h5><i class="fas fa-eye me-2"></i>Visual Quality Assessment</h5>
-                                <p>Our method demonstrates superior edge preservation, texture reconstruction, and artifact reduction compared to existing approaches. Particularly notable in fine structural details and high-frequency components.</p>
+                                <h5><i class="fas fa-database me-2"></i>Comprehensive Dataset Evaluation</h5>
+                                <p>Evaluated on SEM nanoscience dataset (22,000 images across 10 categories) and standard SR benchmarks (Set5, Set14, BSD100, Urban100, Manga109). Performance assessed using PSNR, SSIM, and LPIPS metrics for comprehensive quality measurement.</p>
                             </div>
                             <div class="col-md-6">
-                                <h5><i class="fas fa-clock me-2"></i>Computational Efficiency</h5>
-                                <p>Despite superior quality, our approach maintains competitive inference times with optimized GPU utilization, making it practical for real-world applications.</p>
+                                <h5><i class="fas fa-trophy me-2"></i>Superior Performance Metrics</h5>
+                                <p>Achieves 2.8dB improvement in PSNR, 0.171 increase in SSIM, and 0.10 reduction in LPIPS over state-of-the-art methods. Demonstrates substantial advancements in perceptual fidelity and structural coherence critical for scientific imaging.</p>
+                            </div>
+                            <div class="col-md-6">
+                                <h5><i class="fas fa-microscope me-2"></i>Scientific Imaging Excellence</h5>
+                                <p>Excels at reconstructing fine cellular boundaries and intricate nanoscale textures with precise structural preservation. Unlike competing models that struggle with structural inconsistencies, CSM-SR generates artifact-free reconstructions ideal for material characterization.</p>
+                            </div>
+                            <div class="col-md-6">
+                                <h5><i class="fas fa-cogs me-2"></i>Robust Training Strategy</h5>
+                                <p>Three-phase training approach: encoder pre-training (20-25 epochs), generator pre-training with SSL (25 epochs), and joint fine-tuning with adversarial loss (75-100 epochs). Converges 40K iterations faster than SwinIR with superior stability.</p>
+                            </div>
+                        </div>
+                        <div class="row mt-4">
+                            <div class="col-md-6">
+                                <h5><i class="fas fa-chart-line me-2"></i>Comprehensive Ablation Studies</h5>
+                                <p><strong>Feature Conditioning:</strong> +3.5dB PSNR improvement with encoder conditioning. <strong>Adaptive Fusion:</strong> +0.18dB PSNR over static fusion. <strong>Loss Components:</strong> Hybrid loss achieves optimal balance between sharpness and perceptual quality.</p>
+                            </div>
+                            <div class="col-md-6">
+                                <h5><i class="fas fa-balance-scale me-2"></i>Multi-Scale Performance</h5>
+                                <p>Consistently outperforms state-of-the-art methods across 2×, 3×, and 4× upscaling factors on all benchmark datasets. Demonstrates exceptional ability to preserve fine-grained structural details while enhancing perceptual quality across diverse imaging scenarios.</p>
                             </div>
                         </div>
                     </div>
@@ -996,7 +1029,7 @@
                         <span class="badge bg-primary mb-2">PyTorch</span>
                         <span class="badge bg-info mb-2">CUDA Support</span>
                     </div>
-                    <a href="https://github.com/yourusername/structure-informed-sr" class="btn btn-gradient">
+                    <a href="https://github.com/randika-CJ/CSM-SR-Test3.git" class="btn btn-gradient">
                         <i class="fab fa-github me-2"></i>GitHub Repository
                     </a>
                 </div>
@@ -1096,7 +1129,7 @@
                         </div>
                         <div class="card-body bg-light">
                             <pre><code class="language-bash"># Clone the repository
-git clone https://github.com/yourusername/structure-informed-sr.git
+git clone https://github.com/randika-CJ/CSM-SR-Test3.git
 cd structure-informed-sr
 
 # Install dependencies
@@ -1490,5 +1523,5 @@ python inference.py --input sample.jpg --output result.jpg --scale 4</code></pre
         });
     </script>
 </body>
-</html>
+</html>-lg-8 mx-auto text-center mb-5" data-aos="fade-up" data-aos-delay="100">
                     
