@@ -499,8 +499,52 @@
             }
             
 
-            
-            
+            /* train strategy */
+            /* NEW: Horizontal layout for training stages only */
+            .training-grid-horizontal {
+                display: flex;
+                gap: 1.5rem;
+                margin-bottom: 2rem;
+                flex-wrap: wrap; /* Allows wrapping on smaller screens */
+            }
+
+            .training-stage-card {
+                flex: 1;
+                min-width: 280px; /* Ensures readability on smaller screens */
+                background: rgba(255, 255, 255, 0.1);
+                backdrop-filter: blur(10px);
+                border: 1px solid rgba(255, 255, 255, 0.2);
+                border-radius: 12px;
+                padding: 1.5rem;
+                color: #fff;
+                transition: transform 0.3s ease, box-shadow 0.3s ease;
+            }
+
+            .training-stage-card:hover {
+                transform: translateY(-5px);
+                box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            }
+
+            .training-stage-card h4 {
+                color: #fff;
+                font-size: 1.1rem;
+                margin-bottom: 1rem;
+                display: flex;
+                align-items: center;
+                gap: 0.5rem;
+            }
+
+            .training-stage-card p {
+                margin: 0.5rem 0;
+                font-size: 0.9rem;
+                line-height: 1.4;
+            }
+
+            .training-stage-card strong {
+                color: #a8d5ff;
+            }
+                
+
 
             /* Research Highlights */
             .highlight-card {
@@ -1141,22 +1185,23 @@
             <div class="methodology-section">
                 <h3 class="methodology-title"><i class="fas fa-cogs"></i> Three-Stage Training Strategy</h3>
                 
-                <div class="training-grid">
-                    <div class="architecture-card">
+                <!-- NEW: Horizontal layout for training stages -->
+                <div class="training-grid-horizontal">
+                    <div class="training-stage-card">
                         <h4><i class="fas fa-play"></i>Stage 1: Encoder Pre-training</h4>
                         <p><strong>Duration:</strong> 20-25 epochs</p>
                         <p><strong>Objective:</strong> Train H_ENC independently using gradient and contextual losses</p>
                         <p><strong>Purpose:</strong> Establish effective global structural priors for feature fusion</p>
                     </div>
                     
-                    <div class="architecture-card">
+                    <div class="training-stage-card">
                         <h4><i class="fas fa-forward"></i>Stage 2: Generator Pre-training</h4>
                         <p><strong>Duration:</strong> 25 epochs</p>
                         <p><strong>Objective:</strong> Pre-train generator using SSL loss only</p>
                         <p><strong>Purpose:</strong> Stabilize texture and structural consistency before adversarial training</p>
                     </div>
                     
-                    <div class="architecture-card">
+                    <div class="training-stage-card">
                         <h4><i class="fas fa-sync"></i>Stage 3: Joint Fine-tuning</h4>
                         <p><strong>Duration:</strong> 75-100 epochs</p>
                         <p><strong>Objective:</strong> Joint training with SSL and adversarial losses</p>
@@ -1164,6 +1209,7 @@
                     </div>
                 </div>
 
+                <!-- Your existing glass-info-card remains unchanged -->
                 <div class="glass-info-card">
                     <h5><i class="fas fa-adjust"></i>Dynamic Weight Adjustment Mechanism</h5>
                     <div class="equation">λ = f(metric_current, metric_target)</div>
