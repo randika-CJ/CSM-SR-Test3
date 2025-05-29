@@ -1324,6 +1324,124 @@
 
     <!-- Live Demo Section -->
     <section id="demo" class="section" style="background: #f8f9fa;">
+
+        <div class="container">
+            <div class="text-center mb-5">
+                <h1 class="text-white mb-3">CSM-SR Demo Interface Alternatives</h1>
+                <p class="text-white-50">Choose the best visualization approach for your research demo</p>
+            </div>
+            <!-- Scenario 6: Split Screen -->
+            <div class="scenario-container">
+                <div class="scenario-header">
+                    <h2><i class="fas fa-columns me-2"></i>Scenario 6: Split-Screen Comparison</h2>
+                    <p class="mb-0">Real-time side-by-side comparison interface</p>
+                </div>
+                <div class="scenario-content">
+                    <div class="split-demo">
+                        <div class="demo-controls">
+                            <input type="file" class="form-control" style="max-width: 300px;" accept="image/*">
+                            <button class="btn btn-gradient" onclick="processImage()">
+                                <i class="fas fa-magic me-2"></i>Enhance Image
+                            </button>
+                        </div>
+                        
+                        <div class="comparison-container">
+                            <div class="image-half">
+                                <h5><i class="fas fa-image me-2"></i>Original</h5>
+                                <div class="canvas-placeholder" id="originalCanvas">
+                                    <div class="text-center">
+                                        <i class="fas fa-upload fa-2x mb-2"></i>
+                                        <p>Upload an image to see original</p>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="image-half">
+                                <h5><i class="fas fa-sparkles me-2"></i>Enhanced (4x)</h5>
+                                <div class="canvas-placeholder" id="enhancedCanvas">
+                                    <div class="text-center">
+                                        <i class="fas fa-magic fa-2x mb-2"></i>
+                                        <p>Enhanced version will appear here</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="text-center mt-4">
+                        <div class="row">
+                            <div class="col-md-3">
+                                <div class="metric">
+                                    <span class="value" id="splitPsnr">--</span>
+                                    <span class="label">PSNR</span>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="metric">
+                                    <span class="value" id="splitSsim">--</span>
+                                    <span class="label">SSIM</span>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="metric">
+                                    <span class="value" id="splitLpips">--</span>
+                                    <span class="label">LPIPS</span>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="metric">
+                                    <span class="value" id="splitTime">--</span>
+                                    <span class="label">Time</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <script>
+        // Scenario 6: Split Screen
+        function processImage() {
+            // Simulate image processing
+            document.getElementById('originalCanvas').innerHTML = `
+                <img src="https://picsum.photos/300/200?random=9" style="width: 100%; height: 200px; object-fit: cover; border-radius: 5px;">
+            `;
+            
+            setTimeout(() => {
+                document.getElementById('enhancedCanvas').innerHTML = `
+                    <img src="https://picsum.photos/300/200?random=10" style="width: 100%; height: 200px; object-fit: cover; border-radius: 5px;">
+                `;
+                
+                // Update metrics
+                document.getElementById('splitPsnr').textContent = '31.8';
+                document.getElementById('splitSsim').textContent = '0.92';
+                document.getElementById('splitLpips').textContent = '0.21';
+                document.getElementById('splitTime').textContent = '2.3s';
+            }, 1500);
+        }
+
+        // Add drag and drop functionality
+        document.querySelectorAll('.upload-area').forEach(area => {
+            area.addEventListener('dragover', (e) => {
+                e.preventDefault();
+                area.classList.add('dragover');
+            });
+            
+            area.addEventListener('dragleave', () => {
+                area.classList.remove('dragover');
+            });
+            
+            area.addEventListener('drop', (e) => {
+                e.preventDefault();
+                area.classList.remove('dragover');
+                // Handle file drop
+            });
+        });
+        </script>
+
+
+
         <div class="container">
             <h2 class="section-title" data-aos="fade-up">Interactive Live Demo</h2>
             <div class="demo-section" data-aos="fade-up" data-aos-delay="200">
