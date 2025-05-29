@@ -973,8 +973,8 @@
             100% { width: 100%; }
         }
 
-        /* Image Comparision */
-        .img-comparison-body {
+        /* Image Comparison */
+                .img-comparison-body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             margin: 0;
             padding: 20px;
@@ -1163,8 +1163,6 @@
             line-height: 1.6;
             margin-bottom: 0;
         }
-
-
 
 
     </style>
@@ -1418,172 +1416,188 @@
                 </div>
             </div>
         </div>
-        
-        <div class="img-comparison-container">
-        <h1 class="img-comparison-section-title">Original LR Image vs Generated Images</h1>
-        
-        <div class="img-comparison-description">
-            <h3>Super-Resolution Comparison</h3>
-            <p>This layout demonstrates how to display the original low-resolution image alongside various super-resolution methods. Each method shows its reconstruction quality with quantitative metrics like PSNR and SSIM scores.</p>
+            
+            <div class="img-comparison-container">
+            <h1 class="img-comparison-section-title">Original LR Image vs Generated Images</h1>
+            
+            <div class="img-comparison-description">
+                <h3>Super-Resolution Comparison</h3>
+                <p>This layout demonstrates how to display the original low-resolution image alongside various super-resolution methods. Each method shows its reconstruction quality with quantitative metrics like PSNR and SSIM scores.</p>
+            </div>
+            
+            <div class="img-comparison-grid">
+                <div class="img-comparison-card img-comparison-original-card">
+                    <div class="img-comparison-placeholder">
+                        <img src="https://via.placeholder.com/300x180/e9ecef/6c757d?text=Original+LR" 
+                            alt="Original LR Image" 
+                            style="width: 100%; height: 100%; object-fit: cover; border-radius: 8px;">
+                    </div>
+                    <div class="img-comparison-method-name">Low Resolution Input</div>
+                    <div class="img-comparison-metrics">
+                        Reference Image<br>
+                        Scale Factor: 4x
+                    </div>
+                </div>
+                
+                <div class="img-comparison-card">
+                    <div class="img-comparison-placeholder">
+                        <img src="https://via.placeholder.com/300x180/f8f9fa/6c757d?text=VDSR+Result" 
+                            alt="VDSR Result" 
+                            style="width: 100%; height: 100%; object-fit: cover; border-radius: 8px;">
+                    </div>
+                    <div class="img-comparison-method-name">VDSR</div>
+                    <div class="img-comparison-metrics">
+                        PSNR: 26.979 dB<br>
+                        SSIM: 0.572
+                    </div>
+                </div>
+                
+                <div class="img-comparison-card">
+                    <div class="img-comparison-placeholder">
+                        <img src="https://via.placeholder.com/300x180/f8f9fa/6c757d?text=SRGAN+Result" 
+                            alt="SRGAN Result" 
+                            style="width: 100%; height: 100%; object-fit: cover; border-radius: 8px;">
+                    </div>
+                    <div class="img-comparison-method-name">SRGAN</div>
+                    <div class="img-comparison-metrics">
+                        PSNR: 30.111 dB<br>
+                        SSIM: 0.701
+                    </div>
+                </div>
+                
+                <div class="img-comparison-card">
+                    <div class="img-comparison-placeholder">
+                        <img src="https://via.placeholder.com/300x180/f8f9fa/6c757d?text=ESRGAN+Result" 
+                            alt="ESRGAN Result" 
+                            style="width: 100%; height: 100%; object-fit: cover; border-radius: 8px;">
+                    </div>
+                    <div class="img-comparison-method-name">ESRGAN</div>
+                    <div class="img-comparison-metrics">
+                        PSNR: 31.249 dB<br>
+                        SSIM: 0.721
+                    </div>
+                </div>
+                
+                <div class="img-comparison-card">
+                    <div class="img-comparison-placeholder">
+                        <img src="https://via.placeholder.com/300x180/f8f9fa/6c757d?text=SPSR+Result" 
+                            alt="SPSR Result" 
+                            style="width: 100%; height: 100%; object-fit: cover; border-radius: 8px;">
+                    </div>
+                    <div class="img-comparison-method-name">SPSR</div>
+                    <div class="img-comparison-metrics">
+                        PSNR: 31.010 dB<br>
+                        SSIM: 0.691
+                    </div>
+                </div>
+                
+                <div class="img-comparison-card">
+                    <div class="img-comparison-placeholder">
+                        <img src="https://via.placeholder.com/300x180/f8f9fa/6c757d?text=DSR-VAE+Result" 
+                            alt="DSR-VAE Result" 
+                            style="width: 100%; height: 100%; object-fit: cover; border-radius: 8px;">
+                    </div>
+                    <div class="img-comparison-method-name">DSR-VAE</div>
+                    <div class="img-comparison-metrics">
+                        PSNR: 30.068 dB<br>
+                        SSIM: 0.760
+                    </div>
+                </div>
+                
+                <div class="img-comparison-card">
+                    <div class="img-comparison-placeholder">
+                        <img src="https://via.placeholder.com/300x180/f8f9fa/6c757d?text=SwinIR+Result" 
+                            alt="SwinIR Result" 
+                            style="width: 100%; height: 100%; object-fit: cover; border-radius: 8px;">
+                    </div>
+                    <div class="img-comparison-method-name">SwinIR</div>
+                    <div class="img-comparison-metrics">
+                        PSNR: 32.321 dB<br>
+                        SSIM: 0.820
+                    </div>
+                </div>
+                
+                <div class="img-comparison-card">
+                    <div class="img-comparison-placeholder">
+                        <img src="https://via.placeholder.com/300x180/667eea/ffffff?text=CSM-SR+Result" 
+                            alt="CSM-SR Result" 
+                            style="width: 100%; height: 100%; object-fit: cover; border-radius: 8px;">
+                    </div>
+                    <div class="img-comparison-method-name">CSM-SR</div>
+                    <div class="img-comparison-metrics">
+                        PSNR: 33.210 dB<br>
+                        SSIM: 0.852
+                    </div>
+                </div>
+            </div>
+            
+            <div class="img-comparison-upload-section">
+                <h3>Customize Your Comparison</h3>
+                <p>Upload your own images to create a personalized comparison layout</p>
+                <button class="img-comparison-upload-button" onclick="document.getElementById('imgComparisonUpload').click()">
+                    📁 Upload Images
+                </button>
+                <button class="img-comparison-upload-button" onclick="addNewComparisonMethod()">
+                    ➕ Add Method
+                </button>
+                <input type="file" id="imgComparisonUpload" class="img-comparison-file-input" multiple accept="image/*" onchange="handleComparisonImageUpload(event)">
+            </div>
         </div>
-        
-        <div class="img-comparison-grid">
-            <div class="img-comparison-card img-comparison-original-card">
-                <div class="img-comparison-placeholder">
-                    <span class="img-comparison-placeholder-text">Original LR Image</span>
-                </div>
-                <div class="img-comparison-method-name">Low Resolution Input</div>
-                <div class="img-comparison-metrics">
-                    Reference Image<br>
-                    Scale Factor: 4x
-                </div>
-            </div>
-            
-            <div class="img-comparison-card">
-                <div class="img-comparison-placeholder">
-                    <span class="img-comparison-placeholder-text">VDSR Result</span>
-                </div>
-                <div class="img-comparison-method-name">VDSR</div>
-                <div class="img-comparison-metrics">
-                    PSNR: 26.979 dB<br>
-                    SSIM: 0.572
-                </div>
-            </div>
-            
-            <div class="img-comparison-card">
-                <div class="img-comparison-placeholder">
-                    <span class="img-comparison-placeholder-text">SRGAN Result</span>
-                </div>
-                <div class="img-comparison-method-name">SRGAN</div>
-                <div class="img-comparison-metrics">
-                    PSNR: 30.111 dB<br>
-                    SSIM: 0.701
-                </div>
-            </div>
-            
-            <div class="img-comparison-card">
-                <div class="img-comparison-placeholder">
-                    <span class="img-comparison-placeholder-text">ESRGAN Result</span>
-                </div>
-                <div class="img-comparison-method-name">ESRGAN</div>
-                <div class="img-comparison-metrics">
-                    PSNR: 31.249 dB<br>
-                    SSIM: 0.721
-                </div>
-            </div>
-            
-            <div class="img-comparison-card">
-                <div class="img-comparison-placeholder">
-                    <span class="img-comparison-placeholder-text">SPSR Result</span>
-                </div>
-                <div class="img-comparison-method-name">SPSR</div>
-                <div class="img-comparison-metrics">
-                    PSNR: 31.010 dB<br>
-                    SSIM: 0.691
-                </div>
-            </div>
-            
-            <div class="img-comparison-card">
-                <div class="img-comparison-placeholder">
-                    <span class="img-comparison-placeholder-text">DSR-VAE Result</span>
-                </div>
-                <div class="img-comparison-method-name">DSR-VAE</div>
-                <div class="img-comparison-metrics">
-                    PSNR: 30.068 dB<br>
-                    SSIM: 0.760
-                </div>
-            </div>
-            
-            <div class="img-comparison-card">
-                <div class="img-comparison-placeholder">
-                    <span class="img-comparison-placeholder-text">SwinIR Result</span>
-                </div>
-                <div class="img-comparison-method-name">SwinIR</div>
-                <div class="img-comparison-metrics">
-                    PSNR: 32.321 dB<br>
-                    SSIM: 0.820
-                </div>
-            </div>
-            
-            <div class="img-comparison-card">
-                <div class="img-comparison-placeholder">
-                    <span class="img-comparison-placeholder-text">Your Method</span>
-                </div>
-                <div class="img-comparison-method-name">CSM-SR</div>
-                <div class="img-comparison-metrics">
-                    PSNR: 33.210 dB<br>
-                    SSIM: 0.852
-                </div>
-            </div>
-        </div>
-        
-        <div class="img-comparison-upload-section">
-            <h3>Customize Your Comparison</h3>
-            <p>Upload your own images to create a personalized comparison layout</p>
-            <button class="img-comparison-upload-button" onclick="document.getElementById('imgComparisonUpload').click()">
-                📁 Upload Images
-            </button>
-            <button class="img-comparison-upload-button" onclick="addNewComparisonMethod()">
-                ➕ Add Method
-            </button>
-            <input type="file" id="imgComparisonUpload" class="img-comparison-file-input" multiple accept="image/*" onchange="handleComparisonImageUpload(event)">
-        </div>
-    </div>
 
-    <script>
-        function handleComparisonImageUpload(event) {
-            const files = event.target.files;
-            const grid = document.querySelector('.img-comparison-grid');
-            
-            Array.from(files).forEach((file, index) => {
-                const reader = new FileReader();
-                reader.onload = function(e) {
-                    // Find the first empty placeholder or create new card
-                    const placeholders = document.querySelectorAll('.img-comparison-placeholder');
-                    if (placeholders[index]) {
-                        placeholders[index].innerHTML = `<img src="${e.target.result}" style="width: 100%; height: 100%; object-fit: cover; border-radius: 8px;">`;
-                    }
-                };
-                reader.readAsDataURL(file);
-            });
-        }
-        
-        function addNewComparisonMethod() {
-            const grid = document.querySelector('.img-comparison-grid');
-            const newCard = document.createElement('div');
-            newCard.className = 'img-comparison-card';
-            newCard.innerHTML = `
-                <div class="img-comparison-placeholder">
-                    <span class="img-comparison-placeholder-text">New Method</span>
-                </div>
-                <div class="img-comparison-method-name" contenteditable="true">Method Name</div>
-                <div class="img-comparison-metrics" contenteditable="true">
-                    PSNR: XX.XXX dB<br>
-                    SSIM: X.XXX
-                </div>
-            `;
-            grid.appendChild(newCard);
-            
-            // Add animation
-            newCard.style.opacity = '0';
-            newCard.style.transform = 'translateY(20px)';
-            setTimeout(() => {
-                newCard.style.transition = 'all 0.5s ease';
-                newCard.style.opacity = '1';
-                newCard.style.transform = 'translateY(0)';
-            }, 100);
-        }
-        
-        // Add click-to-edit functionality
-        document.addEventListener('click', function(e) {
-            if (e.target.classList.contains('img-comparison-method-name') || e.target.classList.contains('img-comparison-metrics')) {
-                e.target.style.background = 'rgba(102, 126, 234, 0.1)';
-                e.target.addEventListener('blur', function() {
-                    this.style.background = 'transparent';
-                }, { once: true });
+        <script>
+            function handleComparisonImageUpload(event) {
+                const files = event.target.files;
+                const grid = document.querySelector('.img-comparison-grid');
+                
+                Array.from(files).forEach((file, index) => {
+                    const reader = new FileReader();
+                    reader.onload = function(e) {
+                        // Find the first empty placeholder or create new card
+                        const placeholders = document.querySelectorAll('.img-comparison-placeholder');
+                        if (placeholders[index]) {
+                            placeholders[index].innerHTML = `<img src="${e.target.result}" style="width: 100%; height: 100%; object-fit: cover; border-radius: 8px;">`;
+                        }
+                    };
+                    reader.readAsDataURL(file);
+                });
             }
-        });
-    </script>
+            
+            function addNewComparisonMethod() {
+                const grid = document.querySelector('.img-comparison-grid');
+                const newCard = document.createElement('div');
+                newCard.className = 'img-comparison-card';
+                newCard.innerHTML = `
+                    <div class="img-comparison-placeholder">
+                        <span class="img-comparison-placeholder-text">New Method</span>
+                    </div>
+                    <div class="img-comparison-method-name" contenteditable="true">Method Name</div>
+                    <div class="img-comparison-metrics" contenteditable="true">
+                        PSNR: XX.XXX dB<br>
+                        SSIM: X.XXX
+                    </div>
+                `;
+                grid.appendChild(newCard);
+                
+                // Add animation
+                newCard.style.opacity = '0';
+                newCard.style.transform = 'translateY(20px)';
+                setTimeout(() => {
+                    newCard.style.transition = 'all 0.5s ease';
+                    newCard.style.opacity = '1';
+                    newCard.style.transform = 'translateY(0)';
+                }, 100);
+            }
+            
+            // Add click-to-edit functionality
+            document.addEventListener('click', function(e) {
+                if (e.target.classList.contains('img-comparison-method-name') || e.target.classList.contains('img-comparison-metrics')) {
+                    e.target.style.background = 'rgba(102, 126, 234, 0.1)';
+                    e.target.addEventListener('blur', function() {
+                        this.style.background = 'transparent';
+                    }, { once: true });
+                }
+            });
+        </script>
 
 
             <div class="row">
