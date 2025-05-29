@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -145,7 +147,6 @@
             box-shadow: 0 20px 40px rgba(0,0,0,0.2);
         }
 
-
         /* Research Section */
         * {
             margin: 0;
@@ -158,230 +159,373 @@
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             min-height: 100vh;
             color: #333;
+            overflow-x: hidden;
         }
 
-        .container {
-            max-width: 1200px;
+        /* Content-specific container for research sections */
+        .research-container {
+            max-width: 1400px;
             margin: 0 auto;
-            padding: 0 20px;
+            padding: 0 30px;
         }
 
-        .section {
-            padding: 80px 0;
-        }
-
-        .section-title {
-            font-size: 2.5rem;
-            text-align: center;
-            margin-bottom: 60px;
-            color: white;
+        /* Research section specific styling */
+        .research-section {
+            padding: 100px 0;
             position: relative;
         }
 
-        .section-title::after {
+        /* Enhanced section title with better spacing */
+        .research-title {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 80px;
+            color: white;
+            position: relative;
+            text-shadow: 2px 2px 8px rgba(0,0,0,0.3);
+            line-height: 1.2;
+            letter-spacing: -0.5px;
+        }
+
+        .research-title::after {
             content: '';
             position: absolute;
-            bottom: -10px;
+            bottom: -20px;
             left: 50%;
             transform: translateX(-50%);
-            width: 80px;
-            height: 4px;
-            background: #4facfe;
-            border-radius: 2px;
+            width: 120px;
+            height: 5px;
+            background: linear-gradient(90deg, #4facfe 0%, #00f2fe 100%);
+            border-radius: 3px;
+            box-shadow: 0 2px 10px rgba(79, 172, 254, 0.4);
         }
 
-        .lead {
-            font-size: 1.2rem;
+        /* Enhanced lead text styling */
+        .research-lead {
+            font-size: 1.4rem;
             line-height: 1.8;
-            color: #f8f9fa;
+            color: rgba(255, 255, 255, 0.95);
             text-align: center;
-            margin-bottom: 40px;
+            margin-bottom: 60px;
+            max-width: 1000px;
+            margin-left: auto;
+            margin-right: auto;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
         }
 
-        .row {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 30px;
-            margin-bottom: 40px;
+        /* Grid layout for cards */
+        .research-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 40px;
+            margin-bottom: 80px;
         }
 
-        .col-md-4, .col-md-6, .col-lg-10, .col-12 {
-            flex: 1;
-            min-width: 300px;
-        }
-
-        .col-lg-10 {
-            flex: 0 0 83.333333%;
-            margin: 0 auto;
-        }
-
-        .highlight-card, .glass-card, .architecture-card, .loss-card {
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            border-radius: 20px;
-            padding: 30px;
+        /* Enhanced highlight cards */
+        .research-highlight-card {
+            background: rgba(255, 255, 255, 0.12);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.25);
+            border-radius: 25px;
+            padding: 40px 30px;
             text-align: center;
-            transition: all 0.3s ease;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
             height: 100%;
+            position: relative;
+            overflow: hidden;
         }
 
-        .highlight-card:hover, .architecture-card:hover, .loss-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+        .research-highlight-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(79, 172, 254, 0.1) 0%, rgba(0, 242, 254, 0.1) 100%);
+            opacity: 0;
+            transition: opacity 0.4s ease;
+            border-radius: 25px;
         }
 
-        .glass-card {
-            text-align: left;
-            padding: 40px;
+        .research-highlight-card:hover {
+            transform: translateY(-15px) scale(1.02);
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.3);
+            border-color: rgba(79, 172, 254, 0.6);
         }
 
-        .highlight-icon {
-            width: 80px;
-            height: 80px;
+        .research-highlight-card:hover::before {
+            opacity: 1;
+        }
+
+        .research-icon {
+            width: 90px;
+            height: 90px;
             background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            margin: 0 auto 20px;
-            font-size: 2rem;
+            margin: 0 auto 25px;
+            font-size: 2.2rem;
             color: white;
+            box-shadow: 0 10px 30px rgba(79, 172, 254, 0.4);
+            transition: all 0.3s ease;
         }
 
-        .highlight-card h4, .architecture-card h4, .loss-card h4 {
+        .research-highlight-card:hover .research-icon {
+            transform: rotateY(180deg) scale(1.1);
+            box-shadow: 0 15px 40px rgba(79, 172, 254, 0.6);
+        }
+
+        .research-highlight-card h4 {
             color: white;
-            margin-bottom: 15px;
-            font-size: 1.3rem;
+            margin-bottom: 20px;
+            font-size: 1.4rem;
+            font-weight: 600;
+            position: relative;
+            z-index: 1;
         }
 
-        .highlight-card p, .architecture-card p, .loss-card p {
-            color: #e8e9ea;
-            line-height: 1.6;
-        }
-
-        .glass-card h3 {
-            color: white;
-            font-size: 2rem;
-            margin-bottom: 30px;
-        }
-
-        .glass-card h5 {
-            color: #4facfe;
-            font-size: 1.2rem;
-            margin-bottom: 15px;
-            display: flex;
-            align-items: center;
-        }
-
-        .glass-card h5 i {
-            margin-right: 10px;
-        }
-
-        .glass-card p {
-            color: #e8e9ea;
+        .research-highlight-card p {
+            color: rgba(255, 255, 255, 0.9);
             line-height: 1.7;
-            margin-bottom: 25px;
+            font-size: 1rem;
+            position: relative;
+            z-index: 1;
         }
 
-        .glass-card strong {
-            color: white;
+        /* Methodology section styling */
+        .methodology-section {
+            background: rgba(255, 255, 255, 0.08);
+            border-radius: 30px;
+            padding: 80px 60px;
+            margin: 80px 0;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
         }
 
-        .architecture-section {
-            background: rgba(255, 255, 255, 0.05);
-            border-radius: 20px;
-            padding: 40px;
-            margin: 40px 0;
-        }
-
-        .architecture-title {
+        .methodology-title {
             color: #4facfe;
-            font-size: 1.8rem;
-            margin-bottom: 30px;
+            font-size: 2.5rem;
+            margin-bottom: 60px;
             text-align: center;
+            font-weight: 700;
+            text-shadow: 2px 2px 6px rgba(0,0,0,0.3);
         }
 
-        .loss-function-grid {
+        /* Architecture cards */
+        .architecture-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 25px;
-            margin: 30px 0;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 35px;
+            margin-bottom: 50px;
         }
 
+        .architecture-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 20px;
+            padding: 35px;
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .architecture-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #4facfe 0%, #00f2fe 100%);
+            transform: scaleX(0);
+            transition: transform 0.4s ease;
+        }
+
+        .architecture-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.25);
+            border-color: rgba(79, 172, 254, 0.4);
+        }
+
+        .architecture-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .architecture-card h4 {
+            color: white;
+            margin-bottom: 20px;
+            font-size: 1.4rem;
+            font-weight: 600;
+        }
+
+        .architecture-card h4 i {
+            margin-right: 12px;
+            color: #4facfe;
+        }
+
+        .architecture-card p {
+            color: rgba(255, 255, 255, 0.9);
+            line-height: 1.7;
+            margin-bottom: 15px;
+        }
+
+        .architecture-card strong {
+            color: #4facfe;
+            font-weight: 600;
+        }
+
+        /* Equation styling */
         .equation {
-            background: rgba(0, 0, 0, 0.3);
-            padding: 15px;
-            border-radius: 10px;
+            background: rgba(0, 0, 0, 0.4);
+            padding: 20px;
+            border-radius: 12px;
             font-family: 'Courier New', monospace;
             color: #4facfe;
             text-align: center;
-            margin: 10px 0;
+            margin: 15px 0;
+            font-size: 1.1rem;
+            border: 1px solid rgba(79, 172, 254, 0.3);
+            backdrop-filter: blur(5px);
         }
 
+        /* Rationale boxes */
         .rationale {
-            background: rgba(255, 255, 255, 0.05);
-            padding: 20px;
-            border-radius: 10px;
-            border-left: 4px solid #4facfe;
-            margin: 15px 0;
+            background: rgba(255, 255, 255, 0.08);
+            padding: 25px;
+            border-radius: 15px;
+            border-left: 5px solid #4facfe;
+            margin: 20px 0;
+            backdrop-filter: blur(10px);
         }
 
         .rationale h6 {
             color: #4facfe;
-            font-size: 1rem;
-            margin-bottom: 10px;
+            font-size: 1.1rem;
+            margin-bottom: 12px;
+            font-weight: 600;
         }
 
         .rationale p {
-            color: #e8e9ea;
+            color: rgba(255, 255, 255, 0.85);
             font-size: 0.95rem;
             line-height: 1.6;
         }
 
-        @media (max-width: 768px) {
-            .row {
-                flex-direction: column;
+        /* Loss function specific styling */
+        .loss-function-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+            gap: 30px;
+            margin: 40px 0;
+        }
+
+        .loss-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 20px;
+            padding: 35px;
+            transition: all 0.4s ease;
+            height: auto;
+        }
+
+        .loss-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.25);
+        }
+
+        /* Training stages */
+        .training-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+            margin: 40px 0;
+        }
+
+        /* Responsive design improvements */
+        @media (max-width: 1200px) {
+            .methodology-section {
+                padding: 60px 40px;
             }
             
-            .col-md-4, .col-md-6 {
-                min-width: 100%;
-            }
-            
-            .section-title {
-                font-size: 2rem;
-            }
-            
-            .loss-function-grid {
+            .architecture-grid {
                 grid-template-columns: 1fr;
             }
         }
 
-        /* Section Styling */
-        .section {
-            padding: 100px 0;
-            position: relative;
+        @media (max-width: 768px) {
+            .research-container {
+                padding: 0 20px;
+            }
+            
+            .research-section {
+                padding: 60px 0;
+            }
+            
+            .research-title {
+                margin-bottom: 50px;
+            }
+            
+            .research-grid {
+                grid-template-columns: 1fr;
+                gap: 25px;
+            }
+            
+            .methodology-section {
+                padding: 40px 25px;
+                margin: 40px 0;
+            }
+            
+            .methodology-title {
+                font-size: 2rem;
+            }
+            
+            .loss-function-grid,
+            .training-grid {
+                grid-template-columns: 1fr;
+            }
         }
 
-        .section-title {
-            font-size: 3rem;
-            font-weight: 700;
-            text-align: center;
-            margin-bottom: 4rem;
-            position: relative;
+        /* Enhanced glass card for special content */
+        .glass-info-card {
+            background: rgba(255, 255, 255, 0.12);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.25);
+            border-radius: 25px;
+            padding: 50px;
+            margin: 40px 0;
+            text-align: left;
         }
 
-        .section-title::after {
-            content: '';
-            width: 100px;
-            height: 4px;
-            background: var(--primary-gradient);
-            position: absolute;
-            bottom: -10px;
-            left: 50%;
-            transform: translateX(-50%);
-            border-radius: 2px;
+        .glass-info-card h5 {
+            color: #4facfe;
+            font-size: 1.3rem;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            font-weight: 600;
         }
+
+        .glass-info-card h5 i {
+            margin-right: 15px;
+            font-size: 1.1rem;
+        }
+
+        .glass-info-card p {
+            color: rgba(255, 255, 255, 0.9);
+            line-height: 1.7;
+            margin-bottom: 20px;
+        }
+        
+
 
         /* Research Highlights */
         .highlight-card {
@@ -872,135 +1016,114 @@
 
 
     <!-- Research Overview Section -->
-    <section id="research" class="section">
-        <div class="container">
-            <h2 class="section-title">Research Overview</h2>
+    <!-- Enhanced Research Overview Section -->
+    <section id="research" class="research-section">
+        <div class="research-container">
+            <h2 class="research-title">Research Overview</h2>
             
-            <div class="row mb-5">
-                <div class="col-lg-10 mx-auto text-center">
-                    <p class="lead">Our novel CSM-SR (Conditional Structure-Informed Multi-Scale Super-Resolution GAN) framework integrates multi-scale feature processing and structure-aware conditioning to enhance super-resolution performance in scientific imaging. This breakthrough research addresses critical limitations in preserving fine structural details, particularly in microscopy applications, while achieving superior perceptual realism.</p>
-                </div>
+            <div class="research-lead">
+                Our novel CSM-SR (Conditional Structure-Informed Multi-Scale Super-Resolution GAN) framework integrates multi-scale feature processing and structure-aware conditioning to enhance super-resolution performance in scientific imaging. This breakthrough research addresses critical limitations in preserving fine structural details, particularly in microscopy applications, while achieving superior perceptual realism.
             </div>
             
-            <div class="row g-4 mb-5">
-                <div class="col-md-4">
-                    <div class="highlight-card">
-                        <div class="highlight-icon">
-                            <i class="fas fa-brain"></i>
-                        </div>
-                        <h4>Advanced GAN Architecture</h4>
-                        <p>Employs Residual-in-Residual Dense Blocks (RRDB), Super-Resolution Dense Blocks (SRDB), and PixelShuffle-based upsampling, conditioned on pre-trained EfficientNet features for contextual information capture.</p>
+            <div class="research-grid">
+                <div class="research-highlight-card">
+                    <div class="research-icon">
+                        <i class="fas fa-brain"></i>
                     </div>
+                    <h4>Advanced GAN Architecture</h4>
+                    <p>Employs Residual-in-Residual Dense Blocks (RRDB), Super-Resolution Dense Blocks (SRDB), and PixelShuffle-based upsampling, conditioned on pre-trained EfficientNet features for contextual information capture.</p>
                 </div>
-                <div class="col-md-4">
-                    <div class="highlight-card">
-                        <div class="highlight-icon">
-                            <i class="fas fa-microscope"></i>
-                        </div>
-                        <h4>Scientific Imaging Focus</h4>
-                        <p>Specifically designed for high-resolution structural preservation in scientific imaging, including scanning electron microscopy (SEM) images for nanoscience and materials research applications.</p>
+                
+                <div class="research-highlight-card">
+                    <div class="research-icon">
+                        <i class="fas fa-microscope"></i>
                     </div>
+                    <h4>Scientific Imaging Focus</h4>
+                    <p>Specifically designed for high-resolution structural preservation in scientific imaging, including scanning electron microscopy (SEM) images for nanoscience and materials research applications.</p>
                 </div>
-                <div class="col-md-4">
-                    <div class="highlight-card">
-                        <div class="highlight-icon">
-                            <i class="fas fa-trophy"></i>
-                        </div>
-                        <h4>Outstanding Performance</h4>
-                        <p>Achieves up to 2.8dB higher PSNR, 20% increase in SSIM, and 20% reduction in LPIPS compared to state-of-the-art methods, setting new standards for high-fidelity structural preservation.</p>
+                
+                <div class="research-highlight-card">
+                    <div class="research-icon">
+                        <i class="fas fa-trophy"></i>
                     </div>
+                    <h4>Outstanding Performance</h4>
+                    <p>Achieves up to 2.8dB higher PSNR, 20% increase in SSIM, and 20% reduction in LPIPS compared to state-of-the-art methods, setting new standards for high-fidelity structural preservation.</p>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Enhanced Methodology Section -->
-    <section id="methodology" class="section">
-        <div class="container">
-            <h2 class="section-title">Comprehensive Methodology</h2>
+    <section id="methodology" class="research-section">
+        <div class="research-container">
+            <h2 class="research-title">Comprehensive Methodology</h2>
             
             <!-- Architecture Overview -->
-            <div class="architecture-section">
-                <h3 class="architecture-title"><i class="fas fa-sitemap me-2"></i>Generator Architecture Design</h3>
+            <div class="methodology-section">
+                <h3 class="methodology-title"><i class="fas fa-sitemap"></i> Generator Architecture Design</h3>
                 
-                <div class="row">
-                    <div class="col-md-6">
-                        <div class="architecture-card">
-                            <h4><i class="fas fa-layer-group me-2"></i>Three-Module Pipeline</h4>
-                            <p><strong>Shallow Feature Extraction:</strong> Initial convolution layer maps input ILR ∈ R^(H×W×C) to higher-dimensional feature space F0</p>
-                            <div class="equation">F0 = H_SF(I_LR)</div>
-                            <p><strong>Multi-Scale Processing:</strong> Hierarchical learning with RRDBs and SRDBs for enhanced structural fidelity</p>
-                            <p><strong>HR Reconstruction:</strong> PixelShuffle-based progressive upsampling for artifact-free output</p>
-                        </div>
+                <div class="architecture-grid">
+                    <div class="architecture-card">
+                        <h4><i class="fas fa-layer-group"></i>Three-Module Pipeline</h4>
+                        <p><strong>Shallow Feature Extraction:</strong> Initial convolution layer maps input ILR ∈ R^(H×W×C) to higher-dimensional feature space F0</p>
+                        <div class="equation">F0 = H_SF(I_LR)</div>
+                        <p><strong>Multi-Scale Processing:</strong> Hierarchical learning with RRDBs and SRDBs for enhanced structural fidelity</p>
+                        <p><strong>HR Reconstruction:</strong> PixelShuffle-based progressive upsampling for artifact-free output</p>
                     </div>
                     
-                    <div class="col-md-6">
-                        <div class="architecture-card">
-                            <h4><i class="fas fa-brain me-2"></i>Encoder-Based Conditioning</h4>
-                            <p><strong>Pre-trained EfficientNet:</strong> Extracts global structural and semantic information directly from LR images</p>
-                            <div class="equation">F_ENC = H_ENC(F0)</div>
-                            <p><strong>Key Innovation:</strong> Eliminates need for HR feature maps during inference, enabling practical real-world deployment</p>
-                            <div class="rationale">
-                                <h6>Design Rationale:</h6>
-                                <p>Traditional methods require HR reference images, limiting practical applicability. Our encoder-based approach leverages pre-trained semantic understanding to guide reconstruction.</p>
-                            </div>
+                    <div class="architecture-card">
+                        <h4><i class="fas fa-brain"></i>Encoder-Based Conditioning</h4>
+                        <p><strong>Pre-trained EfficientNet:</strong> Extracts global structural and semantic information directly from LR images</p>
+                        <div class="equation">F_ENC = H_ENC(F0)</div>
+                        <p><strong>Key Innovation:</strong> Eliminates need for HR feature maps during inference, enabling practical real-world deployment</p>
+                        <div class="rationale">
+                            <h6>Design Rationale:</h6>
+                            <p>Traditional methods require HR reference images, limiting practical applicability. Our encoder-based approach leverages pre-trained semantic understanding to guide reconstruction.</p>
                         </div>
                     </div>
                 </div>
 
-                <div class="row mt-4">
-                    <div class="col-12">
-                        <div class="architecture-card">
-                            <h4><i class="fas fa-arrows-alt me-2"></i>Adaptive Feature Fusion (AFF)</h4>
-                            <p><strong>Dynamic Integration:</strong> Combines multi-scale features with encoder-conditioned features using learnable weights</p>
-                            <div class="equation">F_F = α·F_MS + β·F_ENC</div>
-                            <p>Where α and β are learnable parameters that dynamically balance local high-frequency details (F_MS) with global semantic priors (F_ENC)</p>
-                            <div class="rationale">
-                                <h6>Technical Innovation:</h6>
-                                <p>Unlike static fusion approaches, AFF adapts to image content, ensuring optimal balance between texture fidelity and structural coherence through learned attention mechanisms.</p>
-                            </div>
-                        </div>
+                <div class="architecture-card">
+                    <h4><i class="fas fa-arrows-alt"></i>Adaptive Feature Fusion (AFF)</h4>
+                    <p><strong>Dynamic Integration:</strong> Combines multi-scale features with encoder-conditioned features using learnable weights</p>
+                    <div class="equation">F_F = α·F_MS + β·F_ENC</div>
+                    <p>Where α and β are learnable parameters that dynamically balance local high-frequency details (F_MS) with global semantic priors (F_ENC)</p>
+                    <div class="rationale">
+                        <h6>Technical Innovation:</h6>
+                        <p>Unlike static fusion approaches, AFF adapts to image content, ensuring optimal balance between texture fidelity and structural coherence through learned attention mechanisms.</p>
                     </div>
                 </div>
             </div>
 
             <!-- Discriminator Architecture -->
-            <div class="architecture-section">
-                <h3 class="architecture-title"><i class="fas fa-eye me-2"></i>Multi-Scale PatchGAN Discriminator</h3>
+            <div class="methodology-section">
+                <h3 class="methodology-title"><i class="fas fa-eye"></i> Multi-Scale PatchGAN Discriminator</h3>
                 
-                <div class="row">
-                    <div class="col-12">
-                        <div class="architecture-card">
-                            <h4>Progressive Multi-Resolution Evaluation</h4>
-                            <p><strong>Problem with Standard PatchGAN:</strong> Evaluates only local patches, neglecting large-scale consistency</p>
-                            <p><strong>Our Solution:</strong> Multi-scale discriminator evaluates features across multiple resolutions simultaneously</p>
-                            <div class="equation">L_adv = E[log D(I_HR)] + E[log(1 - D(I_SR))]</div>
-                            <div class="rationale">
-                                <h6>Architecture Benefits:</h6>
-                                <p>Ensures both fine-grained texture realism and global structural coherence, overcoming limitations of single-scale discriminators that often miss global inconsistencies.</p>
-                            </div>
-                        </div>
+                <div class="architecture-card">
+                    <h4>Progressive Multi-Resolution Evaluation</h4>
+                    <p><strong>Problem with Standard PatchGAN:</strong> Evaluates only local patches, neglecting large-scale consistency</p>
+                    <p><strong>Our Solution:</strong> Multi-scale discriminator evaluates features across multiple resolutions simultaneously</p>
+                    <div class="equation">L_adv = E[log D(I_HR)] + E[log(1 - D(I_SR))]</div>
+                    <div class="rationale">
+                        <h6>Architecture Benefits:</h6>
+                        <p>Ensures both fine-grained texture realism and global structural coherence, overcoming limitations of single-scale discriminators that often miss global inconsistencies.</p>
                     </div>
                 </div>
             </div>
 
             <!-- Comprehensive Loss Function Design -->
-            <div class="architecture-section">
-                <h3 class="architecture-title"><i class="fas fa-balance-scale me-2"></i>Semantic Structural Loss (SSL) Framework</h3>
+            <div class="methodology-section">
+                <h3 class="methodology-title"><i class="fas fa-balance-scale"></i> Semantic Structural Loss (SSL) Framework</h3>
                 
-                <div class="row mb-4">
-                    <div class="col-12">
-                        <div class="glass-card">
-                            <h5>Total Loss Formulation</h5>
-                            <div class="equation">L_total = λ_adv·L_adv + λ_SSL·L_SSL</div>
-                            <p>Where L_SSL combines three complementary loss components for comprehensive quality optimization:</p>
-                        </div>
-                    </div>
+                <div class="glass-info-card">
+                    <h5><i class="fas fa-function"></i>Total Loss Formulation</h5>
+                    <div class="equation">L_total = λ_adv·L_adv + λ_SSL·L_SSL</div>
+                    <p>Where L_SSL combines three complementary loss components for comprehensive quality optimization:</p>
                 </div>
 
                 <div class="loss-function-grid">
                     <div class="loss-card">
-                        <h4><i class="fas fa-image me-2"></i>Content Preservation Loss</h4>
+                        <h4><i class="fas fa-image"></i>Content Preservation Loss</h4>
                         <p><strong>Perceptual Loss (L_PL):</strong> Extracts semantic representations using pre-trained VGG-19</p>
                         <div class="equation">L_PL = (1/N_l)Σ||φ_i(I_HR) - φ_i(I_SR)||²</div>
                         <p><strong>Contextual Loss (L_CL):</strong> Enforces local texture alignment using cosine similarity</p>
@@ -1012,7 +1135,7 @@
                     </div>
 
                     <div class="loss-card">
-                        <h4><i class="fas fa-vector-square me-2"></i>Structural Fidelity Loss</h4>
+                        <h4><i class="fas fa-vector-square"></i>Structural Fidelity Loss</h4>
                         <p><strong>Gradient Loss (L_GL):</strong> Preserves edge sharpness and structural boundaries</p>
                         <div class="equation">L_GL = (1/N)Σ||∇I_HR - ∇I_SR||²</div>
                         <p><strong>Second-Order Gradient (L_SGL):</strong> Captures finer structural details</p>
@@ -1026,7 +1149,7 @@
                     </div>
 
                     <div class="loss-card">
-                        <h4><i class="fas fa-palette me-2"></i>Texture Preservation Loss</h4>
+                        <h4><i class="fas fa-palette"></i>Texture Preservation Loss</h4>
                         <p><strong>Texture Matching Loss (L_TML):</strong> Ensures realistic texture reproduction</p>
                         <div class="equation">L_TML = (1/N)Σ||∇I_i - ∇Î_i||₁</div>
                         <p><strong>Color Consistency Loss (L_CCL):</strong> Maintains color fidelity</p>
@@ -1040,50 +1163,40 @@
             </div>
 
             <!-- Training Strategy -->
-            <div class="architecture-section">
-                <h3 class="architecture-title"><i class="fas fa-cogs me-2"></i>Three-Stage Training Strategy</h3>
+            <div class="methodology-section">
+                <h3 class="methodology-title"><i class="fas fa-cogs"></i> Three-Stage Training Strategy</h3>
                 
-                <div class="row">
-                    <div class="col-md-4">
-                        <div class="architecture-card">
-                            <h4><i class="fas fa-play me-2"></i>Stage 1: Encoder Pre-training</h4>
-                            <p><strong>Duration:</strong> 20-25 epochs</p>
-                            <p><strong>Objective:</strong> Train H_ENC independently using gradient and contextual losses</p>
-                            <p><strong>Purpose:</strong> Establish effective global structural priors for feature fusion</p>
-                        </div>
+                <div class="training-grid">
+                    <div class="architecture-card">
+                        <h4><i class="fas fa-play"></i>Stage 1: Encoder Pre-training</h4>
+                        <p><strong>Duration:</strong> 20-25 epochs</p>
+                        <p><strong>Objective:</strong> Train H_ENC independently using gradient and contextual losses</p>
+                        <p><strong>Purpose:</strong> Establish effective global structural priors for feature fusion</p>
                     </div>
                     
-                    <div class="col-md-4">
-                        <div class="architecture-card">
-                            <h4><i class="fas fa-forward me-2"></i>Stage 2: Generator Pre-training</h4>
-                            <p><strong>Duration:</strong> 25 epochs</p>
-                            <p><strong>Objective:</strong> Pre-train generator using SSL loss only</p>
-                            <p><strong>Purpose:</strong> Stabilize texture and structural consistency before adversarial training</p>
-                        </div>
+                    <div class="architecture-card">
+                        <h4><i class="fas fa-forward"></i>Stage 2: Generator Pre-training</h4>
+                        <p><strong>Duration:</strong> 25 epochs</p>
+                        <p><strong>Objective:</strong> Pre-train generator using SSL loss only</p>
+                        <p><strong>Purpose:</strong> Stabilize texture and structural consistency before adversarial training</p>
                     </div>
                     
-                    <div class="col-md-4">
-                        <div class="architecture-card">
-                            <h4><i class="fas fa-sync me-2"></i>Stage 3: Joint Fine-tuning</h4>
-                            <p><strong>Duration:</strong> 75-100 epochs</p>
-                            <p><strong>Objective:</strong> Joint training with SSL and adversarial losses</p>
-                            <p><strong>Purpose:</strong> Improve global coherence and high-frequency detail reconstruction</p>
-                        </div>
+                    <div class="architecture-card">
+                        <h4><i class="fas fa-sync"></i>Stage 3: Joint Fine-tuning</h4>
+                        <p><strong>Duration:</strong> 75-100 epochs</p>
+                        <p><strong>Objective:</strong> Joint training with SSL and adversarial losses</p>
+                        <p><strong>Purpose:</strong> Improve global coherence and high-frequency detail reconstruction</p>
                     </div>
                 </div>
 
-                <div class="row mt-4">
-                    <div class="col-12">
-                        <div class="glass-card">
-                            <h5><i class="fas fa-adjust me-2"></i>Dynamic Weight Adjustment Mechanism</h5>
-                            <div class="equation">λ = f(metric_current, metric_target)</div>
-                            <p><strong>Early Training:</strong> Emphasizes L_SSL to stabilize feature learning and preserve structural details</p>
-                            <p><strong>Later Training:</strong> Shifts focus to L_ADV for enhanced perceptual realism and texture fidelity</p>
-                            <div class="rationale">
-                                <h6>Adaptive Training Rationale:</h6>
-                                <p>Dynamic weight adjustment prevents mode collapse while ensuring balanced optimization of competing objectives. This curriculum learning approach leads to more stable training and superior final performance.</p>
-                            </div>
-                        </div>
+                <div class="glass-info-card">
+                    <h5><i class="fas fa-adjust"></i>Dynamic Weight Adjustment Mechanism</h5>
+                    <div class="equation">λ = f(metric_current, metric_target)</div>
+                    <p><strong>Early Training:</strong> Emphasizes L_SSL to stabilize feature learning and preserve structural details</p>
+                    <p><strong>Later Training:</strong> Shifts focus to L_ADV for enhanced perceptual realism and texture fidelity</p>
+                    <div class="rationale">
+                        <h6>Adaptive Training Rationale:</h6>
+                        <p>Dynamic weight adjustment prevents mode collapse while ensuring balanced optimization of competing objectives. This curriculum learning approach leads to more stable training and superior final performance.</p>
                     </div>
                 </div>
             </div>
@@ -1880,3 +1993,5 @@ python inference.py --input sample.jpg --output result.jpg --scale 4</code></pre
 </body>
 </html>-lg-8 mx-auto text-center mb-5" data-aos="fade-up" data-aos-delay="100">
                     
+
+
