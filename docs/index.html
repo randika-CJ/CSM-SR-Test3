@@ -40,6 +40,9 @@
 
         * {
             scroll-behavior: smooth;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
         }
 
         body {
@@ -132,7 +135,7 @@
             100% { transform: translateY(-100px) rotate(360deg); opacity: 0; }
         }
 
-        /* Glassmorphism Cards */
+        /* Original Glassmorphism Cards */
         .glass-card {
             background: rgba(255, 255, 255, 0.25);
             backdrop-filter: blur(10px);
@@ -147,35 +150,22 @@
             box-shadow: 0 20px 40px rgba(0,0,0,0.2);
         }
 
-        /* Research Section */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            min-height: 100vh;
-            color: #333;
-            overflow-x: hidden;
-        }
-
-        /* Content-specific container for research sections */
+        /* Research Section Enhancements */
         .research-container {
             max-width: 1400px;
             margin: 0 auto;
             padding: 0 30px;
         }
 
-        /* Research section specific styling */
         .research-section {
             padding: 100px 0;
             position: relative;
+            background: var(--primary-gradient);
+            background-size: 400% 400%;
+            animation: gradientShift 15s ease infinite;
         }
 
-        /* Enhanced section title with better spacing */
+        /* Enhanced section title */
         .research-title {
             font-size: clamp(2.5rem, 5vw, 4rem);
             font-weight: 700;
@@ -196,12 +186,12 @@
             transform: translateX(-50%);
             width: 120px;
             height: 5px;
-            background: linear-gradient(90deg, #4facfe 0%, #00f2fe 100%);
+            background: var(--accent-gradient);
             border-radius: 3px;
             box-shadow: 0 2px 10px rgba(79, 172, 254, 0.4);
         }
 
-        /* Enhanced lead text styling */
+        /* Enhanced lead text */
         .research-lead {
             font-size: 1.4rem;
             line-height: 1.8;
@@ -222,12 +212,12 @@
             margin-bottom: 80px;
         }
 
-        /* Enhanced highlight cards */
+        /* Enhanced research highlight cards */
         .research-highlight-card {
-            background: rgba(255, 255, 255, 0.12);
+            background: rgba(255, 255, 255, 0.25);
             backdrop-filter: blur(20px);
             -webkit-backdrop-filter: blur(20px);
-            border: 1px solid rgba(255, 255, 255, 0.25);
+            border: 1px solid rgba(255, 255, 255, 0.18);
             border-radius: 25px;
             padding: 40px 30px;
             text-align: center;
@@ -263,7 +253,7 @@
         .research-icon {
             width: 90px;
             height: 90px;
-            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+            background: var(--accent-gradient);
             border-radius: 50%;
             display: flex;
             align-items: center;
@@ -297,13 +287,13 @@
             z-index: 1;
         }
 
-        /* Methodology section styling */
+        /* Methodology section */
         .methodology-section {
-            background: rgba(255, 255, 255, 0.08);
+            background: rgba(255, 255, 255, 0.15);
             border-radius: 30px;
             padding: 80px 60px;
             margin: 80px 0;
-            border: 1px solid rgba(255, 255, 255, 0.15);
+            border: 1px solid rgba(255, 255, 255, 0.18);
             backdrop-filter: blur(15px);
             -webkit-backdrop-filter: blur(15px);
         }
@@ -326,10 +316,10 @@
         }
 
         .architecture-card {
-            background: rgba(255, 255, 255, 0.1);
+            background: rgba(255, 255, 255, 0.2);
             backdrop-filter: blur(15px);
             -webkit-backdrop-filter: blur(15px);
-            border: 1px solid rgba(255, 255, 255, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.25);
             border-radius: 20px;
             padding: 35px;
             transition: all 0.4s ease;
@@ -344,7 +334,7 @@
             left: 0;
             right: 0;
             height: 4px;
-            background: linear-gradient(90deg, #4facfe 0%, #00f2fe 100%);
+            background: var(--accent-gradient);
             transform: scaleX(0);
             transition: transform 0.4s ease;
         }
@@ -382,6 +372,34 @@
             font-weight: 600;
         }
 
+        /* Original highlight card for comparison */
+        .highlight-card {
+            background: white;
+            border-radius: 20px;
+            padding: 2rem;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            height: 100%;
+        }
+
+        .highlight-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+        }
+
+        .highlight-icon {
+            width: 80px;
+            height: 80px;
+            background: var(--accent-gradient);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+            color: white;
+            font-size: 2rem;
+        }
+
         /* Equation styling */
         .equation {
             background: rgba(0, 0, 0, 0.4);
@@ -398,7 +416,7 @@
 
         /* Rationale boxes */
         .rationale {
-            background: rgba(255, 255, 255, 0.08);
+            background: rgba(255, 255, 255, 0.15);
             padding: 25px;
             border-radius: 15px;
             border-left: 5px solid #4facfe;
@@ -419,38 +437,38 @@
             line-height: 1.6;
         }
 
-        /* Loss function specific styling */
-        .loss-function-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
-            gap: 30px;
+        /* Enhanced glass info card */
+        .glass-info-card {
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.25);
+            border-radius: 25px;
+            padding: 50px;
             margin: 40px 0;
+            text-align: left;
         }
 
-        .loss-card {
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(15px);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            border-radius: 20px;
-            padding: 35px;
-            transition: all 0.4s ease;
-            height: auto;
+        .glass-info-card h5 {
+            color: #4facfe;
+            font-size: 1.3rem;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            font-weight: 600;
         }
 
-        .loss-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.25);
+        .glass-info-card h5 i {
+            margin-right: 15px;
+            font-size: 1.1rem;
         }
 
-        /* Training stages */
-        .training-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 30px;
-            margin: 40px 0;
+        .glass-info-card p {
+            color: rgba(255, 255, 255, 0.9);
+            line-height: 1.7;
+            margin-bottom: 20px;
         }
 
-        /* Responsive design improvements */
+        /* Responsive design */
         @media (max-width: 1200px) {
             .methodology-section {
                 padding: 60px 40px;
@@ -487,45 +505,10 @@
             .methodology-title {
                 font-size: 2rem;
             }
-            
-            .loss-function-grid,
-            .training-grid {
-                grid-template-columns: 1fr;
-            }
-        }
-
-        /* Enhanced glass card for special content */
-        .glass-info-card {
-            background: rgba(255, 255, 255, 0.12);
-            backdrop-filter: blur(20px);
-            border: 1px solid rgba(255, 255, 255, 0.25);
-            border-radius: 25px;
-            padding: 50px;
-            margin: 40px 0;
-            text-align: left;
-        }
-
-        .glass-info-card h5 {
-            color: #4facfe;
-            font-size: 1.3rem;
-            margin-bottom: 20px;
-            display: flex;
-            align-items: center;
-            font-weight: 600;
-        }
-
-        .glass-info-card h5 i {
-            margin-right: 15px;
-            font-size: 1.1rem;
-        }
-
-        .glass-info-card p {
-            color: rgba(255, 255, 255, 0.9);
-            line-height: 1.7;
-            margin-bottom: 20px;
         }
         
 
+        
 
         /* Research Highlights */
         .highlight-card {
