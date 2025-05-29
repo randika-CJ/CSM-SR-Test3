@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -970,6 +972,201 @@
             0% { width: 0%; }
             100% { width: 100%; }
         }
+
+        /* Image Comparision */
+        .img-comparison-body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+        
+        .img-comparison-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            backdrop-filter: blur(10px);
+        }
+        
+        .img-comparison-section-title {
+            text-align: center;
+            color: #2c3e50;
+            margin-bottom: 30px;
+            font-size: 2em;
+            font-weight: 300;
+            position: relative;
+        }
+        
+        .img-comparison-section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 3px;
+            background: linear-gradient(90deg, #667eea, #764ba2);
+            border-radius: 2px;
+        }
+        
+        .img-comparison-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-bottom: 40px;
+        }
+        
+        .img-comparison-card {
+            background: #fff;
+            border-radius: 15px;
+            padding: 15px;
+            text-align: center;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .img-comparison-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, #667eea, transparent);
+            transition: left 0.5s ease;
+        }
+        
+        .img-comparison-card:hover::before {
+            left: 100%;
+        }
+        
+        .img-comparison-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.15);
+        }
+        
+        .img-comparison-placeholder {
+            width: 100%;
+            height: 180px;
+            background: linear-gradient(45deg, #f8f9fa, #e9ecef);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 10px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .img-comparison-placeholder::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: repeating-linear-gradient(
+                45deg,
+                transparent,
+                transparent 10px,
+                rgba(102, 126, 234, 0.1) 10px,
+                rgba(102, 126, 234, 0.1) 20px
+            );
+            animation: img-comparison-shimmer 3s infinite;
+        }
+        
+        @keyframes img-comparison-shimmer {
+            0% { transform: translateX(-100%) translateY(-100%); }
+            100% { transform: translateX(100%) translateY(100%); }
+        }
+        
+        .img-comparison-placeholder-text {
+            color: #6c757d;
+            font-weight: 500;
+            z-index: 1;
+            position: relative;
+        }
+        
+        .img-comparison-method-name {
+            font-weight: 600;
+            color: #2c3e50;
+            margin-bottom: 5px;
+            font-size: 1.1em;
+        }
+        
+        .img-comparison-metrics {
+            font-size: 0.9em;
+            color: #6c757d;
+            line-height: 1.4;
+        }
+        
+        .img-comparison-original-card {
+            border: 3px solid #667eea;
+            background: linear-gradient(135deg, #667eea10, #764ba210);
+        }
+        
+        .img-comparison-original-card .img-comparison-method-name {
+            color: #667eea;
+            font-size: 1.2em;
+        }
+        
+        .img-comparison-upload-section {
+            margin-top: 30px;
+            padding: 20px;
+            background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+            border-radius: 15px;
+            text-align: center;
+        }
+        
+        .img-comparison-upload-button {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            margin: 10px;
+        }
+        
+        .img-comparison-upload-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(102, 126, 234, 0.3);
+        }
+        
+        .img-comparison-file-input {
+            display: none;
+        }
+        
+        .img-comparison-description {
+            background: rgba(102, 126, 234, 0.1);
+            padding: 20px;
+            border-radius: 15px;
+            margin-bottom: 30px;
+            border-left: 4px solid #667eea;
+        }
+        
+        .img-comparison-description h3 {
+            margin-top: 0;
+            color: #2c3e50;
+        }
+        
+        .img-comparison-description p {
+            color: #6c757d;
+            line-height: 1.6;
+            margin-bottom: 0;
+        }
+
+
+
+
     </style>
 </head>
 <body>
@@ -1221,7 +1418,174 @@
                 </div>
             </div>
         </div>
+        
+        <div class="img-comparison-container">
+        <h1 class="img-comparison-section-title">Original LR Image vs Generated Images</h1>
+        
+        <div class="img-comparison-description">
+            <h3>Super-Resolution Comparison</h3>
+            <p>This layout demonstrates how to display the original low-resolution image alongside various super-resolution methods. Each method shows its reconstruction quality with quantitative metrics like PSNR and SSIM scores.</p>
+        </div>
+        
+        <div class="img-comparison-grid">
+            <div class="img-comparison-card img-comparison-original-card">
+                <div class="img-comparison-placeholder">
+                    <span class="img-comparison-placeholder-text">Original LR Image</span>
+                </div>
+                <div class="img-comparison-method-name">Low Resolution Input</div>
+                <div class="img-comparison-metrics">
+                    Reference Image<br>
+                    Scale Factor: 4x
+                </div>
+            </div>
             
+            <div class="img-comparison-card">
+                <div class="img-comparison-placeholder">
+                    <span class="img-comparison-placeholder-text">VDSR Result</span>
+                </div>
+                <div class="img-comparison-method-name">VDSR</div>
+                <div class="img-comparison-metrics">
+                    PSNR: 26.979 dB<br>
+                    SSIM: 0.572
+                </div>
+            </div>
+            
+            <div class="img-comparison-card">
+                <div class="img-comparison-placeholder">
+                    <span class="img-comparison-placeholder-text">SRGAN Result</span>
+                </div>
+                <div class="img-comparison-method-name">SRGAN</div>
+                <div class="img-comparison-metrics">
+                    PSNR: 30.111 dB<br>
+                    SSIM: 0.701
+                </div>
+            </div>
+            
+            <div class="img-comparison-card">
+                <div class="img-comparison-placeholder">
+                    <span class="img-comparison-placeholder-text">ESRGAN Result</span>
+                </div>
+                <div class="img-comparison-method-name">ESRGAN</div>
+                <div class="img-comparison-metrics">
+                    PSNR: 31.249 dB<br>
+                    SSIM: 0.721
+                </div>
+            </div>
+            
+            <div class="img-comparison-card">
+                <div class="img-comparison-placeholder">
+                    <span class="img-comparison-placeholder-text">SPSR Result</span>
+                </div>
+                <div class="img-comparison-method-name">SPSR</div>
+                <div class="img-comparison-metrics">
+                    PSNR: 31.010 dB<br>
+                    SSIM: 0.691
+                </div>
+            </div>
+            
+            <div class="img-comparison-card">
+                <div class="img-comparison-placeholder">
+                    <span class="img-comparison-placeholder-text">DSR-VAE Result</span>
+                </div>
+                <div class="img-comparison-method-name">DSR-VAE</div>
+                <div class="img-comparison-metrics">
+                    PSNR: 30.068 dB<br>
+                    SSIM: 0.760
+                </div>
+            </div>
+            
+            <div class="img-comparison-card">
+                <div class="img-comparison-placeholder">
+                    <span class="img-comparison-placeholder-text">SwinIR Result</span>
+                </div>
+                <div class="img-comparison-method-name">SwinIR</div>
+                <div class="img-comparison-metrics">
+                    PSNR: 32.321 dB<br>
+                    SSIM: 0.820
+                </div>
+            </div>
+            
+            <div class="img-comparison-card">
+                <div class="img-comparison-placeholder">
+                    <span class="img-comparison-placeholder-text">Your Method</span>
+                </div>
+                <div class="img-comparison-method-name">CSM-SR</div>
+                <div class="img-comparison-metrics">
+                    PSNR: 33.210 dB<br>
+                    SSIM: 0.852
+                </div>
+            </div>
+        </div>
+        
+        <div class="img-comparison-upload-section">
+            <h3>Customize Your Comparison</h3>
+            <p>Upload your own images to create a personalized comparison layout</p>
+            <button class="img-comparison-upload-button" onclick="document.getElementById('imgComparisonUpload').click()">
+                📁 Upload Images
+            </button>
+            <button class="img-comparison-upload-button" onclick="addNewComparisonMethod()">
+                ➕ Add Method
+            </button>
+            <input type="file" id="imgComparisonUpload" class="img-comparison-file-input" multiple accept="image/*" onchange="handleComparisonImageUpload(event)">
+        </div>
+    </div>
+
+    <script>
+        function handleComparisonImageUpload(event) {
+            const files = event.target.files;
+            const grid = document.querySelector('.img-comparison-grid');
+            
+            Array.from(files).forEach((file, index) => {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    // Find the first empty placeholder or create new card
+                    const placeholders = document.querySelectorAll('.img-comparison-placeholder');
+                    if (placeholders[index]) {
+                        placeholders[index].innerHTML = `<img src="${e.target.result}" style="width: 100%; height: 100%; object-fit: cover; border-radius: 8px;">`;
+                    }
+                };
+                reader.readAsDataURL(file);
+            });
+        }
+        
+        function addNewComparisonMethod() {
+            const grid = document.querySelector('.img-comparison-grid');
+            const newCard = document.createElement('div');
+            newCard.className = 'img-comparison-card';
+            newCard.innerHTML = `
+                <div class="img-comparison-placeholder">
+                    <span class="img-comparison-placeholder-text">New Method</span>
+                </div>
+                <div class="img-comparison-method-name" contenteditable="true">Method Name</div>
+                <div class="img-comparison-metrics" contenteditable="true">
+                    PSNR: XX.XXX dB<br>
+                    SSIM: X.XXX
+                </div>
+            `;
+            grid.appendChild(newCard);
+            
+            // Add animation
+            newCard.style.opacity = '0';
+            newCard.style.transform = 'translateY(20px)';
+            setTimeout(() => {
+                newCard.style.transition = 'all 0.5s ease';
+                newCard.style.opacity = '1';
+                newCard.style.transform = 'translateY(0)';
+            }, 100);
+        }
+        
+        // Add click-to-edit functionality
+        document.addEventListener('click', function(e) {
+            if (e.target.classList.contains('img-comparison-method-name') || e.target.classList.contains('img-comparison-metrics')) {
+                e.target.style.background = 'rgba(102, 126, 234, 0.1)';
+                e.target.addEventListener('blur', function() {
+                    this.style.background = 'transparent';
+                }, { once: true });
+            }
+        });
+    </script>
+
+
             <div class="row">
                 <div class="col-lg-10 mx-auto">
                     <!-- Main Publication -->
