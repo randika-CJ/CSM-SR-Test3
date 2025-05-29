@@ -16,6 +16,7 @@
     <meta property="twitter:card" content="summary_large_image">
     <meta property="twitter:title" content="Structure-Informed Super-Resolution Research">
     
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" rel="stylesheet">
@@ -142,6 +143,218 @@
         .glass-card:hover {
             transform: translateY(-10px);
             box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+        }
+
+
+        /* Research Section */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            color: #333;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .section {
+            padding: 80px 0;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 60px;
+            color: white;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: #4facfe;
+            border-radius: 2px;
+        }
+
+        .lead {
+            font-size: 1.2rem;
+            line-height: 1.8;
+            color: #f8f9fa;
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+
+        .col-md-4, .col-md-6, .col-lg-10, .col-12 {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .col-lg-10 {
+            flex: 0 0 83.333333%;
+            margin: 0 auto;
+        }
+
+        .highlight-card, .glass-card, .architecture-card, .loss-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 20px;
+            padding: 30px;
+            text-align: center;
+            transition: all 0.3s ease;
+            height: 100%;
+        }
+
+        .highlight-card:hover, .architecture-card:hover, .loss-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+        }
+
+        .glass-card {
+            text-align: left;
+            padding: 40px;
+        }
+
+        .highlight-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            font-size: 2rem;
+            color: white;
+        }
+
+        .highlight-card h4, .architecture-card h4, .loss-card h4 {
+            color: white;
+            margin-bottom: 15px;
+            font-size: 1.3rem;
+        }
+
+        .highlight-card p, .architecture-card p, .loss-card p {
+            color: #e8e9ea;
+            line-height: 1.6;
+        }
+
+        .glass-card h3 {
+            color: white;
+            font-size: 2rem;
+            margin-bottom: 30px;
+        }
+
+        .glass-card h5 {
+            color: #4facfe;
+            font-size: 1.2rem;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+        }
+
+        .glass-card h5 i {
+            margin-right: 10px;
+        }
+
+        .glass-card p {
+            color: #e8e9ea;
+            line-height: 1.7;
+            margin-bottom: 25px;
+        }
+
+        .glass-card strong {
+            color: white;
+        }
+
+        .architecture-section {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 20px;
+            padding: 40px;
+            margin: 40px 0;
+        }
+
+        .architecture-title {
+            color: #4facfe;
+            font-size: 1.8rem;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        .loss-function-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 25px;
+            margin: 30px 0;
+        }
+
+        .equation {
+            background: rgba(0, 0, 0, 0.3);
+            padding: 15px;
+            border-radius: 10px;
+            font-family: 'Courier New', monospace;
+            color: #4facfe;
+            text-align: center;
+            margin: 10px 0;
+        }
+
+        .rationale {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 20px;
+            border-radius: 10px;
+            border-left: 4px solid #4facfe;
+            margin: 15px 0;
+        }
+
+        .rationale h6 {
+            color: #4facfe;
+            font-size: 1rem;
+            margin-bottom: 10px;
+        }
+
+        .rationale p {
+            color: #e8e9ea;
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        @media (max-width: 768px) {
+            .row {
+                flex-direction: column;
+            }
+            
+            .col-md-4, .col-md-6 {
+                min-width: 100%;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+            
+            .loss-function-grid {
+                grid-template-columns: 1fr;
+            }
         }
 
         /* Section Styling */
@@ -658,21 +871,19 @@
     </section>
 
 
-    <!-- Research Overview -->
+    <!-- Research Overview Section -->
     <section id="research" class="section">
         <div class="container">
-            <h2 class="section-title" data-aos="fade-up">Research Overview</h2>
+            <h2 class="section-title">Research Overview</h2>
             
-            <!-- Research Introduction -->
             <div class="row mb-5">
                 <div class="col-lg-10 mx-auto text-center">
                     <p class="lead">Our novel CSM-SR (Conditional Structure-Informed Multi-Scale Super-Resolution GAN) framework integrates multi-scale feature processing and structure-aware conditioning to enhance super-resolution performance in scientific imaging. This breakthrough research addresses critical limitations in preserving fine structural details, particularly in microscopy applications, while achieving superior perceptual realism.</p>
                 </div>
             </div>
             
-            <!-- Research Highlights -->
             <div class="row g-4 mb-5">
-                <div class="col-md-4" data-aos="fade-up" data-aos-delay="100">
+                <div class="col-md-4">
                     <div class="highlight-card">
                         <div class="highlight-icon">
                             <i class="fas fa-brain"></i>
@@ -681,7 +892,7 @@
                         <p>Employs Residual-in-Residual Dense Blocks (RRDB), Super-Resolution Dense Blocks (SRDB), and PixelShuffle-based upsampling, conditioned on pre-trained EfficientNet features for contextual information capture.</p>
                     </div>
                 </div>
-                <div class="col-md-4" data-aos="fade-up" data-aos-delay="200">
+                <div class="col-md-4">
                     <div class="highlight-card">
                         <div class="highlight-icon">
                             <i class="fas fa-microscope"></i>
@@ -690,7 +901,7 @@
                         <p>Specifically designed for high-resolution structural preservation in scientific imaging, including scanning electron microscopy (SEM) images for nanoscience and materials research applications.</p>
                     </div>
                 </div>
-                <div class="col-md-4" data-aos="fade-up" data-aos-delay="300">
+                <div class="col-md-4">
                     <div class="highlight-card">
                         <div class="highlight-icon">
                             <i class="fas fa-trophy"></i>
@@ -700,39 +911,183 @@
                     </div>
                 </div>
             </div>
+        </div>
+    </section>
 
-            <!-- Methodology Section -->
-            <div class="row mt-5 mb-5">
-                <div class="col-lg-10 mx-auto">
-                    <div class="glass-card" data-aos="fade-up" data-aos-delay="400">
-                        <h3 class="mb-4">Methodology</h3>
-                        <div class="row g-4">
-                            <div class="col-md-6">
-                                <h5><i class="fas fa-layer-group me-2"></i>Generator Architecture</h5>
-                                <p><strong>Three-Module Design:</strong> Shallow Feature Extraction, Multi-Scale Feature Processing with Encoder Conditioning, and High-Resolution Image Reconstruction. Integrates hierarchical multi-scale learning with adaptive feature fusion using RRDBs and SRDBs for enhanced structural fidelity.</p>
-                            </div>
-                            <div class="col-md-6">
-                                <h5><i class="fas fa-brain me-2"></i>Encoder-Based Feature Conditioning</h5>
-                                <p><strong>Pre-trained EfficientNet:</strong> Extracts high-quality features directly from LR images without requiring HR feature maps. Generates encoder-conditioned features that embed global structural and semantic information effectively.</p>
-                            </div>
-                            <div class="col-md-6">
-                                <h5><i class="fas fa-eye me-2"></i>Multi-Scale PatchGAN Discriminator</h5>
-                                <p><strong>Progressive Architecture:</strong> Evaluates features across multiple resolutions to ensure fine-grained texture realism and global structural coherence, overcoming limitations of standard PatchGAN approaches.</p>
-                            </div>
-                            <div class="col-md-6">
-                                <h5><i class="fas fa-balance-scale me-2"></i>Semantic Structural Loss (SSL)</h5>
-                                <p><strong>Hybrid Loss Function:</strong> Combines Content Preservation Loss (perceptual + contextual), Structural Fidelity Loss (gradient + SSIM), and Texture Preservation Loss for comprehensive quality optimization.</p>
+    <!-- Enhanced Methodology Section -->
+    <section id="methodology" class="section">
+        <div class="container">
+            <h2 class="section-title">Comprehensive Methodology</h2>
+            
+            <!-- Architecture Overview -->
+            <div class="architecture-section">
+                <h3 class="architecture-title"><i class="fas fa-sitemap me-2"></i>Generator Architecture Design</h3>
+                
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="architecture-card">
+                            <h4><i class="fas fa-layer-group me-2"></i>Three-Module Pipeline</h4>
+                            <p><strong>Shallow Feature Extraction:</strong> Initial convolution layer maps input ILR ∈ R^(H×W×C) to higher-dimensional feature space F0</p>
+                            <div class="equation">F0 = H_SF(I_LR)</div>
+                            <p><strong>Multi-Scale Processing:</strong> Hierarchical learning with RRDBs and SRDBs for enhanced structural fidelity</p>
+                            <p><strong>HR Reconstruction:</strong> PixelShuffle-based progressive upsampling for artifact-free output</p>
+                        </div>
+                    </div>
+                    
+                    <div class="col-md-6">
+                        <div class="architecture-card">
+                            <h4><i class="fas fa-brain me-2"></i>Encoder-Based Conditioning</h4>
+                            <p><strong>Pre-trained EfficientNet:</strong> Extracts global structural and semantic information directly from LR images</p>
+                            <div class="equation">F_ENC = H_ENC(F0)</div>
+                            <p><strong>Key Innovation:</strong> Eliminates need for HR feature maps during inference, enabling practical real-world deployment</p>
+                            <div class="rationale">
+                                <h6>Design Rationale:</h6>
+                                <p>Traditional methods require HR reference images, limiting practical applicability. Our encoder-based approach leverages pre-trained semantic understanding to guide reconstruction.</p>
                             </div>
                         </div>
-                        <div class="row mt-4">
-                            <div class="col-12">
-                                <h5><i class="fas fa-arrows-alt me-2"></i>Adaptive Feature Fusion</h5>
-                                <p><strong>Dynamic Integration:</strong> The Adaptive Feature Fusion (AFF) module combines multi-scale features (capturing local high-frequency details) with encoder-conditioned features (providing global semantic priors) using learnable weights α and β. This ensures both texture fidelity and structural coherence through PixelShuffle-based progressive upsampling for artifact-free reconstruction.</p>
+                    </div>
+                </div>
+
+                <div class="row mt-4">
+                    <div class="col-12">
+                        <div class="architecture-card">
+                            <h4><i class="fas fa-arrows-alt me-2"></i>Adaptive Feature Fusion (AFF)</h4>
+                            <p><strong>Dynamic Integration:</strong> Combines multi-scale features with encoder-conditioned features using learnable weights</p>
+                            <div class="equation">F_F = α·F_MS + β·F_ENC</div>
+                            <p>Where α and β are learnable parameters that dynamically balance local high-frequency details (F_MS) with global semantic priors (F_ENC)</p>
+                            <div class="rationale">
+                                <h6>Technical Innovation:</h6>
+                                <p>Unlike static fusion approaches, AFF adapts to image content, ensuring optimal balance between texture fidelity and structural coherence through learned attention mechanisms.</p>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
+
+            <!-- Discriminator Architecture -->
+            <div class="architecture-section">
+                <h3 class="architecture-title"><i class="fas fa-eye me-2"></i>Multi-Scale PatchGAN Discriminator</h3>
+                
+                <div class="row">
+                    <div class="col-12">
+                        <div class="architecture-card">
+                            <h4>Progressive Multi-Resolution Evaluation</h4>
+                            <p><strong>Problem with Standard PatchGAN:</strong> Evaluates only local patches, neglecting large-scale consistency</p>
+                            <p><strong>Our Solution:</strong> Multi-scale discriminator evaluates features across multiple resolutions simultaneously</p>
+                            <div class="equation">L_adv = E[log D(I_HR)] + E[log(1 - D(I_SR))]</div>
+                            <div class="rationale">
+                                <h6>Architecture Benefits:</h6>
+                                <p>Ensures both fine-grained texture realism and global structural coherence, overcoming limitations of single-scale discriminators that often miss global inconsistencies.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Comprehensive Loss Function Design -->
+            <div class="architecture-section">
+                <h3 class="architecture-title"><i class="fas fa-balance-scale me-2"></i>Semantic Structural Loss (SSL) Framework</h3>
+                
+                <div class="row mb-4">
+                    <div class="col-12">
+                        <div class="glass-card">
+                            <h5>Total Loss Formulation</h5>
+                            <div class="equation">L_total = λ_adv·L_adv + λ_SSL·L_SSL</div>
+                            <p>Where L_SSL combines three complementary loss components for comprehensive quality optimization:</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="loss-function-grid">
+                    <div class="loss-card">
+                        <h4><i class="fas fa-image me-2"></i>Content Preservation Loss</h4>
+                        <p><strong>Perceptual Loss (L_PL):</strong> Extracts semantic representations using pre-trained VGG-19</p>
+                        <div class="equation">L_PL = (1/N_l)Σ||φ_i(I_HR) - φ_i(I_SR)||²</div>
+                        <p><strong>Contextual Loss (L_CL):</strong> Enforces local texture alignment using cosine similarity</p>
+                        <div class="equation">L_CL = -(1/N)Σlog(cos(I_HR, I_SR))</div>
+                        <div class="rationale">
+                            <h6>Why This Combination:</h6>
+                            <p>Perceptual loss captures high-level semantic content while contextual loss ensures fine-grained texture matching, together preserving both global structure and local details.</p>
+                        </div>
+                    </div>
+
+                    <div class="loss-card">
+                        <h4><i class="fas fa-vector-square me-2"></i>Structural Fidelity Loss</h4>
+                        <p><strong>Gradient Loss (L_GL):</strong> Preserves edge sharpness and structural boundaries</p>
+                        <div class="equation">L_GL = (1/N)Σ||∇I_HR - ∇I_SR||²</div>
+                        <p><strong>Second-Order Gradient (L_SGL):</strong> Captures finer structural details</p>
+                        <div class="equation">L_SGL = (1/N)Σ||∇²I_HR - ∇²I_SR||²</div>
+                        <p><strong>SSIM Loss:</strong> Ensures structural similarity preservation</p>
+                        <div class="equation">L_SSIM = 1 - SSIM(I_HR, I_SR)</div>
+                        <div class="rationale">
+                            <h6>Multi-Order Gradients Rationale:</h6>
+                            <p>First-order gradients capture edges, second-order gradients detect corners and fine textures. Combined with SSIM, this ensures comprehensive structural preservation across all scales.</p>
+                        </div>
+                    </div>
+
+                    <div class="loss-card">
+                        <h4><i class="fas fa-palette me-2"></i>Texture Preservation Loss</h4>
+                        <p><strong>Texture Matching Loss (L_TML):</strong> Ensures realistic texture reproduction</p>
+                        <div class="equation">L_TML = (1/N)Σ||∇I_i - ∇Î_i||₁</div>
+                        <p><strong>Color Consistency Loss (L_CCL):</strong> Maintains color fidelity</p>
+                        <div class="equation">L_CCL = (1/N)Σ||I_i - Î_i||₁</div>
+                        <div class="rationale">
+                            <h6>L1 vs L2 Choice:</h6>
+                            <p>L1 norm used for texture losses promotes sparsity and prevents over-smoothing, crucial for preserving fine textural details in scientific imaging applications.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Training Strategy -->
+            <div class="architecture-section">
+                <h3 class="architecture-title"><i class="fas fa-cogs me-2"></i>Three-Stage Training Strategy</h3>
+                
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="architecture-card">
+                            <h4><i class="fas fa-play me-2"></i>Stage 1: Encoder Pre-training</h4>
+                            <p><strong>Duration:</strong> 20-25 epochs</p>
+                            <p><strong>Objective:</strong> Train H_ENC independently using gradient and contextual losses</p>
+                            <p><strong>Purpose:</strong> Establish effective global structural priors for feature fusion</p>
+                        </div>
+                    </div>
+                    
+                    <div class="col-md-4">
+                        <div class="architecture-card">
+                            <h4><i class="fas fa-forward me-2"></i>Stage 2: Generator Pre-training</h4>
+                            <p><strong>Duration:</strong> 25 epochs</p>
+                            <p><strong>Objective:</strong> Pre-train generator using SSL loss only</p>
+                            <p><strong>Purpose:</strong> Stabilize texture and structural consistency before adversarial training</p>
+                        </div>
+                    </div>
+                    
+                    <div class="col-md-4">
+                        <div class="architecture-card">
+                            <h4><i class="fas fa-sync me-2"></i>Stage 3: Joint Fine-tuning</h4>
+                            <p><strong>Duration:</strong> 75-100 epochs</p>
+                            <p><strong>Objective:</strong> Joint training with SSL and adversarial losses</p>
+                            <p><strong>Purpose:</strong> Improve global coherence and high-frequency detail reconstruction</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row mt-4">
+                    <div class="col-12">
+                        <div class="glass-card">
+                            <h5><i class="fas fa-adjust me-2"></i>Dynamic Weight Adjustment Mechanism</h5>
+                            <div class="equation">λ = f(metric_current, metric_target)</div>
+                            <p><strong>Early Training:</strong> Emphasizes L_SSL to stabilize feature learning and preserve structural details</p>
+                            <p><strong>Later Training:</strong> Shifts focus to L_ADV for enhanced perceptual realism and texture fidelity</p>
+                            <div class="rationale">
+                                <h6>Adaptive Training Rationale:</h6>
+                                <p>Dynamic weight adjustment prevents mode collapse while ensuring balanced optimization of competing objectives. This curriculum learning approach leads to more stable training and superior final performance.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
             
             <div class="row">
                 <div class="col-lg-10 mx-auto">
@@ -963,7 +1318,7 @@
             <div class="row mt-5">
                 <div class="col-12">
                     <div class="highlight-card" data-aos="fade-up" data-aos-delay="400">
-                        <h4 class="mb-4">Experimental Results & Analysis</h4>
+                        <h4 class="mb-4">Results & Analysis</h4>
                         <div class="row g-4">
                             <div class="col-md-6">
                                 <h5><i class="fas fa-database me-2"></i>Comprehensive Dataset Evaluation</h5>
