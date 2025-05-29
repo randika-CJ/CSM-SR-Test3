@@ -1,5 +1,3 @@
-
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -501,16 +499,17 @@
 
             /* train strategy */
             /* NEW: Horizontal layout for training stages only */
+            /* Horizontal layout for training stages only */
             .training-grid-horizontal {
                 display: flex;
                 gap: 1.5rem;
                 margin-bottom: 2rem;
-                flex-wrap: wrap; /* Allows wrapping on smaller screens */
+                flex-wrap: wrap;
             }
 
             .training-stage-card {
                 flex: 1;
-                min-width: 280px; /* Ensures readability on smaller screens */
+                min-width: 280px;
                 background: rgba(255, 255, 255, 0.1);
                 backdrop-filter: blur(10px);
                 border: 1px solid rgba(255, 255, 255, 0.2);
@@ -526,7 +525,7 @@
             }
 
             .training-stage-card h4 {
-                color: #000000;
+                color: #fff;
                 font-size: 1.1rem;
                 margin-bottom: 1rem;
                 display: flex;
@@ -541,7 +540,18 @@
             }
 
             .training-stage-card strong {
-                color: #00396f;
+                color: #a8d5ff;
+            }
+
+            /* Responsive design */
+            @media (max-width: 768px) {
+                .training-grid-horizontal {
+                    flex-direction: column;
+                }
+                
+                .training-stage-card {
+                    min-width: unset;
+                }
             }
                 
 
